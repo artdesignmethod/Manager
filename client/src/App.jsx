@@ -1,0 +1,102 @@
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import {
+  AddProject,
+  EditProject,
+  Register,
+  Login,
+  DashboardLayout,
+  Profile,
+  Admin,
+  Error,
+  AllProjects,
+  Stats,
+  HomeLayout,
+  Landing,
+} from "./pages";
+
+import { action as registerAction } from "./pages/Register";
+import { action as loginAction } from "./pages/Login";
+import { action as addProjectAction } from "./pages/AddProject";
+// import { loader as editProjectLoader } from "./pages/EditProject";
+// import { action as editProjectAction } from "./pages/EditProject";
+import { action as deleteProjectAction } from "./pages/DeleteProject";
+import { action as profileAction } from "./pages/Profile";
+import ErrorElement from "./components/ErrorElement";
+
+export const checkDefaultTheme = () => {
+  const darkTheme = localStorage.getItem("darkTheme") === "true";
+  document.body.classList.toggle("dark-theme", darkTheme);
+  return darkTheme;
+};
+
+checkDefaultTheme();
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60 * 5,
+    },
+  },
+});
+
+const router = createBrowserRouter([
+  {
+    path: "/", // Parent route
+    element: <HomeLayout />,
+    errorElement: <Error />,
+    children: [
+      { index: true, element: <Landing /> },
+      { path: "register", element: <Register />, action: registerAction },
+      {
+        path: "login",
+        element: <Login />,
+        action: loginAction(queryClient),
+      },
+      { path: "error", element: <Error /> },
+
+      {
+        path: "dashboard",
+        element: <DashboardLayout queryClient={queryClient} />,
+        children: [
+          {
+            index: true,
+            element: <AddProject />,
+            action: addProjectAction(queryClient),
+          },
+          { path: "stats", element: <Stats /> },
+          {
+            path: "all-projects",
+            element: <AllProjects />,
+            errorElement: <ErrorElement />,
+          },
+          {
+            path: "profile",
+            element: <Profile />,
+            action: profileAction(queryClient),
+          },
+          { path: "admin", element: <Admin /> },
+          {
+            path: "edit-project",
+            element: <EditProject />,
+            // loader: editProjectLoader(queryClient),
+            // action: editProjectAction(queryClient),
+          },
+          {
+            path: "delete-project/:id",
+            action: deleteProjectAction(queryClient),
+          },
+        ],
+      },
+    ],
+  },
+]);
+
+const App = () => {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
+  );
+};
+export default App;
