@@ -193,6 +193,7 @@ button:disabled {
 .logo-container {
   display: flex;
   margin-bottom: 1.6rem;
+  margin-left: -0.8rem;
 }
 
 .logo {
