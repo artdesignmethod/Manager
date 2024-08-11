@@ -10,7 +10,7 @@
     "projectName": "Technology Podcast",
     "projectHours": 2,
     "projectPrice": 100,
-    "projectStatus": "producing",
+    "projectStatus": "production",
     "createdAt": "2024-08-03T04:10:11Z"
   },
   {
@@ -38,7 +38,7 @@
     "projectName": "Radio Podcast",
     "projectHours": 4,
     "projectPrice": 200,
-    "projectStatus": "producing",
+    "projectStatus": "production",
     "createdAt": "2024-07-01T02:10:11Z"
   },
   {
