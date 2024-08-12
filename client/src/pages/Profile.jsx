@@ -55,7 +55,7 @@ const Profile = () => {
                   defaultValue="John"
                   minLength="1"
                   maxLength="14"
-                  name="first-name"
+                  name="firstName"
                 />
 
                 <FormRow
@@ -66,7 +66,7 @@ const Profile = () => {
                   defaultValue="Doe"
                   minLength="1"
                   maxLength="14"
-                  name="last-name"
+                  name="lastName"
                 />
               </div>
 
