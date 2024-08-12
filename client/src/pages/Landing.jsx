@@ -14,7 +14,9 @@ const Landing = () => {
 
         <section className="hero-section center">
           <div className="hero-text">
-            <h1 className="heading-primary">Start and complete</h1>
+            <h1 className="heading-primary">
+              From start <br /> to finish
+            </h1>
             <p className="hero-description">
               Creating a smooth project management experience
             </p>
