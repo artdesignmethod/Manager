@@ -3,6 +3,7 @@ import * as dotenv from "dotenv";
 dotenv.config();
 const app = express();
 import morgan from "morgan";
+import mongoose from "mongoose";
 
 // Only run morgan middleware in development
 if (process.env.NODE_ENV === "development") {
@@ -25,6 +26,12 @@ app.post("/", (req, res) => {
 
 const port = process.env.PORT || 3000;
 
-app.listen(port, () => {
-  console.log("Server running.");
-});
+try {
+  await mongoose.connect(process.env.MONGO_URL);
+  app.listen(port, () => {
+    console.log(`Server running on PORT ${port}.`);
+  });
+} catch (error) {
+  console.log(error);
+  process.exit(1);
+}

@@ -38,7 +38,7 @@ const Profile = () => {
           className="flex light-form"
           encType="multipart/form-data"
         >
-          <h3 className="heading-tertiary dark">Update profile</h3>
+          <h3 className="heading-tertiary center">Update profile</h3>
 
           <div className="profile-form-inputs-container">
             <p className="light-form-description">

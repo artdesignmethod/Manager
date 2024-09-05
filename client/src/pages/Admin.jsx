@@ -1,8 +1,10 @@
 const Admin = () => {
   return (
-    <div>
-      <h1>Admin Page</h1>
-    </div>
+    <section className="admin-section">
+      <h3 className="heading-tertiary center dark">Admin Overview</h3>
+
+      <div className="admin-overview-container grid grid-cols-3"> </div>
+    </section>
   );
 };
 export default Admin;

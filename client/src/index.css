@@ -851,20 +851,22 @@ input[type="file"]::file-selector-button:hover {
   height: 100%;
 }
 
+.dashboard-form-section .heading-tertiary,
+.admin-section .heading-tertiary {
+  color: #374151;
+  font-weight: 700;
+  margin-bottom: 3.2rem;
+}
+
 .dashboard-form-img-container {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   border-top-left-radius: var(--border-radius-26);
   border-bottom-left-radius: var(--border-radius-26);
+  box-shadow: var(--shadow-light);
   height: 100%;
   width: 100%;
-}
-
-.light-form .heading-tertiary {
-  color: #374151;
-  font-weight: 800;
-  margin-bottom: 3.2rem;
 }
 
 .light-form-description {

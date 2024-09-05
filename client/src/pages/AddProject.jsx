@@ -26,7 +26,7 @@ const AddProject = () => {
       <div className="dashboard-form-img-container project-form-background"></div>
 
       <Form method="post" className="light-form">
-        <h3 className=" heading-tertiary">Add new project</h3>
+        <h3 className=" heading-tertiary center">Add new project</h3>
 
         <div className="form-input-gap grid grid-cols-2">
           <FormRow
