@@ -1,6 +1,13 @@
 import express from "express";
-
+import * as dotenv from "dotenv";
+dotenv.config();
 const app = express();
+import morgan from "morgan";
+
+// Only run morgan middleware in development
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
+}
 
 app.use(express.json());
 
@@ -16,6 +23,8 @@ app.post("/", (req, res) => {
   });
 });
 
-app.listen(3000, () => {
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => {
   console.log("Server running.");
 });
