@@ -10,6 +10,10 @@ export { default as ProjectsContainer } from "./ProjectsContainer";
 
 export { default as SearchContainer } from "./SearchContainer";
 
+export { default as StatsContainer } from "./StatsContainer";
+
+export { default as ChartsContainer } from "./ChartsContainer";
+
 export { default as PaginationContainer } from "./PaginationContainer";
 
 export { default as SubmitButton } from "./SubmitButton";
