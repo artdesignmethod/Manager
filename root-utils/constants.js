@@ -1,6 +1,6 @@
 export const PROJECT_STATUS = {
   SCHEDULED: "scheduled",
-  WORKING: "production",
+  PRODUCTION: "production",
   COMPLETED: "completed",
 };
 
