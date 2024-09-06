@@ -423,9 +423,57 @@ button:disabled {
   justify-content: end;
 }
 
-.theme-icon {
+.light-theme-icon {
   height: 4.4rem;
+  width: 4.4rem;
+  animation: rotateIn 2s;
+  -moz-animation: rotateIn 2s;
+}
+
+.light-theme-icon:hover {
+  animation: rotateOut 2s linear 0s infinite;
+  -moz-animation: rotateOut 2s linear 0s infinite;
+}
+
+.dark-theme-icon {
   height: 4.4rem;
+  width: 4.4rem;
+}
+
+@keyframes rotateIn {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@-webkit-keyframes rotateIn {
+  0% {
+    -webkit-transform: rotate(360deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+  }
+}
+
+@keyframes rotateOut {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes rotateOut {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }
 
 .dashboard-nav {
