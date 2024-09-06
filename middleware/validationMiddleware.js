@@ -35,7 +35,7 @@ export const validateProjectInput = withValidationErrors([
 
 export const validateIdParam = withValidationErrors([
   param("id")
-    .custom(async (value) => {
+    .custom((value) => {
       return mongoose.Types.ObjectId.isValid(value);
     })
     .withMessage("Invalid MongoDB id."), // .custom() = custom function
