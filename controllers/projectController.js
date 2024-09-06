@@ -3,6 +3,7 @@ import { StatusCodes } from "http-status-codes";
 
 export const getAllProjects = async (req, res) => {
   const projects = await Project.find({});
+
   res.status(StatusCodes.OK).json({ projects });
 };
 
@@ -15,27 +16,27 @@ export const createProject = async (req, res) => {
 
 // Get Single Project
 export const getProject = async (req, res) => {
-  const { id } = req.params;
-  const project = await Project.findById(id);
+  const project = await Project.findById(req.params.id);
 
   res.status(StatusCodes.OK).json({ project });
 };
 
 // Update Project
 export const updateProject = async (req, res) => {
-  const { id } = req.params;
-
-  const updatedProject = await Project.findByIdAndUpdate(id, req.body, {
-    new: true, // Inside this options object, new: true = Get Updated Project. By default you get the old Project, not Updated one.
-  });
+  const updatedProject = await Project.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    {
+      new: true, // Inside this options object, new: true = Get Updated Project. By default you get the old Project, not Updated one.
+    }
+  );
 
   res.status(StatusCodes.OK).json({ project: updatedProject });
 };
 
 // Delete Project
 export const deleteProject = async (req, res) => {
-  const { id } = req.params;
-  const removedProject = await Project.findByIdAndDelete(id);
+  const removedProject = await Project.findByIdAndDelete(req.params.id);
 
   res.status(200).json({ msg: "Project deleted.", project: removedProject });
 };

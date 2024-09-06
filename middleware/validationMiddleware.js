@@ -10,7 +10,11 @@ const withValidationErrors = (validateValues) => {
     (req, res, next) => {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
-        const errorMessages = errors.array().map((error) => error.msg);
+        const errorMessages = errors.array().map((error) => error.msg); // msg is built in
+
+        if (errorMessages[0].startsWith(" no project")) {
+          throw new NotFoundError(errorMessages);
+        }
 
         throw new BadRequestError(errorMessages);
       }
