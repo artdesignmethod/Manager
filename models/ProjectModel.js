@@ -31,4 +31,4 @@ const ProjectSchema = new mongoose.Schema(
 
 export default mongoose.model("Project", ProjectSchema);
 
-// Project = Collection name (Table) is named 'projects' in MongoDB automatically
+// Project = Collection name (Table) is named 'projects' in MongoDB

@@ -8,6 +8,7 @@ import mongoose from "mongoose";
 
 // Router Imports
 import projectRouter from "./routes/projectRouter.js";
+import authRouter from "./routes/authRouter.js";
 
 // Middleware Imports
 import errorHandlerMiddleware from "./middleware/errorHandlerMiddleware.js";
@@ -26,6 +27,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/v1/projects", projectRouter);
+
+app.use("/api/v1/auth", authRouter);
 
 // Not found middleware applies to all requests and URLS.
 app.use("*", (req, res) => {

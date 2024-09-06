@@ -27,5 +27,4 @@ UserSchema.methods.toJSON = function () {
 
 export default mongoose.model("User", UserSchema);
 
-// User = Collection name (Table)
-// Named 'users' is MongoDB automatically
+// User = Collection name (Table) is named 'users' in MongoDB
