@@ -2,7 +2,7 @@ import { nanoid } from "nanoid";
 
 // For Testing routes
 let projects = [
-  { id: nanoid(), projectName: "Project 1", projectStatus: "completed" },
+  { id: 4444, projectName: "Project 1", projectStatus: "completed" },
   { id: nanoid(), projectName: "Project 2", projectStatus: "scheduled" },
 ];
 
@@ -25,7 +25,7 @@ export const createProject = async (req, res) => {
 
 export const getSingleProject = async (req, res) => {
   const { id } = req.params;
-  const project = project.find((project) => project.id === id);
+  const project = projects.find((project) => project.id === id);
 
   if (!project) {
     return res.status(404).json({ msg: `No project found with id ${id}.` });
@@ -41,7 +41,7 @@ export const updateProject = async (req, res) => {
   }
 
   const { id } = req.params;
-  const project = project.find((project) => project.id === id);
+  const project = projects.find((project) => project.id === id);
 
   if (!project) {
     return res.status(400).json({ msg: `No project found with id ${id}.` });
