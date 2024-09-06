@@ -60,29 +60,31 @@ const EditProject = () => {
       <Form method="post" className="light-form">
         <h3 className="center heading-tertiary dark">Edit Project</h3>
 
+        <FormRow
+          labelText="Project name"
+          labelClass="dark-label"
+          type="text"
+          inputClass="light-input"
+          defaultValue={project.projectName}
+          minLength="1"
+          maxLength="18"
+          name="projectName"
+        />
+
         <div className="form-input-gap grid grid-cols-2">
           <FormRow
-            labelText="Project name"
+            labelText="Number of days"
             labelClass="dark-label"
-            type="text"
+            type="number"
             inputClass="light-input"
-            defaultValue={project.projectName}
-            minLength="1"
-            maxLength="18"
-            name="projectName"
+            min="1"
+            max="365"
+            name="projectDays"
+            defaultValue={project.projectDays}
           />
 
-          <FormRowSelect
-            labelText="Project status"
-            name="projectStatus"
-            list={Object.values(PROJECT_STATUS)}
-            defaultValue={project.projectStatus}
-          />
-        </div>
-
-        <div className="form-input-gap grid grid-cols-2">
           <FormRow
-            labelText="Production hours"
+            labelText="Number of hours"
             labelClass="dark-label"
             type="number"
             inputClass="light-input"
@@ -91,7 +93,9 @@ const EditProject = () => {
             name="projectHours"
             defaultValue={project.projectHours}
           />
+        </div>
 
+        <div className="form-input-gap grid grid-cols-2">
           <FormRow
             labelText="Price"
             labelClass="dark-label"
@@ -101,6 +105,13 @@ const EditProject = () => {
             max="999999999"
             name="projectPrice"
             defaultValue={project.projectPrice}
+          />
+
+          <FormRowSelect
+            labelText="Project status"
+            name="projectStatus"
+            list={Object.values(PROJECT_STATUS)}
+            defaultValue={project.projectStatus}
           />
         </div>
 

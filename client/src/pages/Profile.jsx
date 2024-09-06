@@ -30,7 +30,7 @@ const Profile = () => {
 
   return (
     <section className="dashboard-form-section grid grid-cols-2">
-      <div className="dashboard-form-img-container profile-form-background"></div>
+      <div className="dashboard-form-img-container edit-profile-form-background"></div>
 
       <div>
         <Form
@@ -38,13 +38,9 @@ const Profile = () => {
           className="flex light-form"
           encType="multipart/form-data"
         >
-          <h3 className="heading-tertiary center">Update profile</h3>
+          <h3 className="heading-tertiary center">My Profile</h3>
 
           <div className="profile-form-inputs-container">
-            <p className="light-form-description">
-              Please enter your new information below:
-            </p>
-
             <div className="profile-contact-section">
               <div className="form-input-gap grid grid-cols-2">
                 <FormRow

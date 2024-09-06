@@ -10,7 +10,7 @@ const Error = () => {
           <div className="error-text-container">
             <h1 className="heading-primary">404</h1>
 
-            <p className="general-description">Page not found.</p>
+            <h2 className="heading-secondary">Page not found.</h2>
 
             <Link to="/dashboard" className="nav-link glass-link">
               Return to Home

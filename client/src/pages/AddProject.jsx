@@ -23,34 +23,36 @@ export const action =
 const AddProject = () => {
   return (
     <div className="dashboard-form-section grid grid-cols-2">
-      <div className="dashboard-form-img-container project-form-background"></div>
+      <div className="dashboard-form-img-container add-project-form-background"></div>
 
       <Form method="post" className="light-form">
-        <h3 className=" heading-tertiary center">Add new project</h3>
+        <h3 className=" heading-tertiary center">Add project</h3>
+
+        <FormRow
+          labelText="Project name"
+          labelClass="dark-label"
+          type="text"
+          inputClass="light-input"
+          defaultValue="Artistic"
+          minLength="1"
+          maxLength="18"
+          name="projectName"
+        />
 
         <div className="form-input-gap grid grid-cols-2">
           <FormRow
-            labelText="Project name"
+            labelText="Number of days"
             labelClass="dark-label"
-            type="text"
+            type="number"
             inputClass="light-input"
-            defaultValue="Artistic"
-            minLength="1"
-            maxLength="18"
-            name="projectName"
+            min="1"
+            max="365"
+            name="projectDays"
+            defaultValue="90"
           />
 
-          <FormRowSelect
-            labelText="Project status"
-            name="projectStatus"
-            list={Object.values(PROJECT_STATUS)}
-            defaultValue={PROJECT_STATUS.SCHEDULED}
-          />
-        </div>
-
-        <div className="form-input-gap grid grid-cols-2">
           <FormRow
-            labelText="Production hours"
+            labelText="Number of hours"
             labelClass="dark-label"
             type="number"
             inputClass="light-input"
@@ -59,7 +61,9 @@ const AddProject = () => {
             name="projectHours"
             defaultValue="40"
           />
+        </div>
 
+        <div className="form-input-gap grid grid-cols-2">
           <FormRow
             labelText="Price"
             labelClass="dark-label"
@@ -69,6 +73,13 @@ const AddProject = () => {
             max="999999999"
             name="projectPrice"
             defaultValue="1000"
+          />
+
+          <FormRowSelect
+            labelText="Project status"
+            name="projectStatus"
+            list={Object.values(PROJECT_STATUS)}
+            defaultValue={PROJECT_STATUS.SCHEDULED}
           />
         </div>
 
