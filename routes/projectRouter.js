@@ -8,15 +8,18 @@ import {
   deleteProject,
 } from "../controllers/projectController.js";
 
-import { validateProjectInput } from "../middleware/validationMiddleware.js";
+import {
+  validateProjectInput,
+  validateIdParam,
+} from "../middleware/validationMiddleware.js";
 
 const router = Router();
 router.route("/").get(getAllProjects).post(validateProjectInput, createProject);
 
 router
   .route("/:id")
-  .get(getProject)
-  .patch(validateProjectInput, updateProject)
-  .delete(deleteProject);
+  .get(validateIdParam, getProject)
+  .patch(validateProjectInput, validateIdParam, updateProject)
+  .delete(validateIdParam, deleteProject);
 
 export default router;
