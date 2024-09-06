@@ -1,68 +1,52 @@
-import { nanoid } from "nanoid";
-
-// For Testing routes
-let projects = [
-  { id: 4444, projectName: "Project 1", projectStatus: "completed" },
-  { id: nanoid(), projectName: "Project 2", projectStatus: "scheduled" },
-];
+import Project from "../models/ProjectModel.js";
+import { StatusCodes } from "http-status-codes";
 
 export const getAllProjects = async (req, res) => {
-  res.status(200).json({ projects });
+  const projects = await Project.find({});
+  res.status(StatusCodes.OK).json({ projects });
 };
 
+// Create Project
 export const createProject = async (req, res) => {
-  const { projectName, projectStatus } = req.body;
+  const project = await Project.create(req.body);
 
-  if (!projectName || !projectStatus) {
-    return res.status(400).json({ msg: "Project name and status required." });
-  }
-  const id = nanoid(10);
-
-  const project = { id, projectName, projectStatus };
-  projects.push(project);
-  res.status(200).json({ project });
+  res.status(StatusCodes.CREATED).json({ project });
 };
 
-export const getSingleProject = async (req, res) => {
+// Get Single Project
+export const getProject = async (req, res) => {
   const { id } = req.params;
-  const project = projects.find((project) => project.id === id);
+  const project = await Project.findById(id);
 
   if (!project) {
-    return res.status(404).json({ msg: `No project found with id ${id}.` });
+    return res
+      .status(StatusCodes.NOT_FOUND)
+      .json({ msg: `No project found with id ${id}.` });
   }
-  res.status(200).json({ project });
+  res.status(StatusCodes.OK).json({ project });
 };
 
+// Update Project
 export const updateProject = async (req, res) => {
-  const { projectName, projectStatus } = req.body;
-
-  if (!projectName || !projectStatus) {
-    return res.status(400).json({ msg: "Project name and status required." });
-  }
-
   const { id } = req.params;
-  const project = projects.find((project) => project.id === id);
 
-  if (!project) {
-    return res.status(400).json({ msg: `No project found with id ${id}.` });
-  }
+  const updatedProject = await Project.findByIdAndUpdate(id, req.body, {
+    new: true, // Inside this options object, new: true = Get Updated Project. By default you get the old Project, not Updated one.
+  });
 
-  project.projectName = projectName;
-  project.projectStatus = projectStatus;
-
-  res.status(200).json({ msg: "Project updated.", project });
+  res.status(StatusCodes.OK).json({ project: updatedProject });
 };
 
+// Delete Project
 export const deleteProject = async (req, res) => {
   const { id } = req.params;
-  const project = projects.find((project) => project.id === id);
+  const removedProject = await Project.findByIdAndDelete(id);
 
-  if (!project) {
-    return res.status(404).json({ msg: `No project found with id ${id}.` });
+  if (!removedProject) {
+    return res
+      .status(StatusCodes.NO_CONTENT)
+      .json({ msg: `No project found with id ${id}.` });
   }
-
-  const newProjects = projects.filter((project) => project.id !== id);
-  projects = newProjects;
 
   res.status(200).json({ msg: "Project deleted." });
 };

@@ -1,22 +1,23 @@
-import express from "express";
+import "express-async-errors";
 import * as dotenv from "dotenv";
 dotenv.config();
+import express from "express";
 const app = express();
 import morgan from "morgan";
 import mongoose from "mongoose";
 
-import {
-  createProject,
-  deleteProject,
-  updateProject,
-  getAllProjects,
-  getSingleProject,
-} from "./controllers/projectController.js";
+// Router Imports
+import projectRouter from "./routes/projectRouter.js";
+
+// Middleware Imports
+import errorHandlerMiddleware from "./middleware/errorHandlerMiddleware.js";
 
 // Only run morgan middleware in development
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
+
+// Middleware
 
 app.use(express.json());
 
@@ -32,20 +33,14 @@ app.post("/", (req, res) => {
   });
 });
 
-// Get All Projects
-app.get("/api/v1/projects", getAllProjects);
+app.use("/api/v1/projects", projectRouter);
 
-// Create Project
-app.post("/api/v1/projects", createProject);
+// Not found middleware applies to all requests and URLS.
+app.use("*", (req, res) => {
+  res.status(404).json({ msg: "Not found." });
+});
 
-// Get Single Project
-app.get("/api/v1/projects/:id", getSingleProject);
-
-// // Edit Project
-app.patch("/api/v1/projects/:id", updateProject);
-
-// // Delete Project
-app.delete("/api/v1/projects/:id", deleteProject);
+app.use(errorHandlerMiddleware);
 
 const port = process.env.PORT || 3000;
 
