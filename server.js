@@ -25,14 +25,6 @@ app.get("/", (req, res) => {
   res.send("Hello.");
 });
 
-app.post("/", (req, res) => {
-  console.log(req);
-  res.json({
-    message: "Testing post route. Received data successfully.",
-    data: req.body,
-  });
-});
-
 app.use("/api/v1/projects", projectRouter);
 
 // Not found middleware applies to all requests and URLS.

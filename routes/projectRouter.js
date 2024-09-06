@@ -8,9 +8,15 @@ import {
   deleteProject,
 } from "../controllers/projectController.js";
 
-const router = Router();
-router.route("/").get(getAllProjects).post(createProject);
+import { validateProjectInput } from "../middleware/validationMiddleware.js";
 
-router.route("/:id").get(getProject).patch(updateProject).delete(deleteProject);
+const router = Router();
+router.route("/").get(getAllProjects).post(validateProjectInput, createProject);
+
+router
+  .route("/:id")
+  .get(getProject)
+  .patch(validateProjectInput, updateProject)
+  .delete(deleteProject);
 
 export default router;
