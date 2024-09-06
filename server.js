@@ -5,6 +5,14 @@ const app = express();
 import morgan from "morgan";
 import mongoose from "mongoose";
 
+import {
+  createProject,
+  deleteProject,
+  updateProject,
+  getAllProjects,
+  getSingleProject,
+} from "./controllers/projectController.js";
+
 // Only run morgan middleware in development
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
@@ -23,6 +31,21 @@ app.post("/", (req, res) => {
     data: req.body,
   });
 });
+
+// Get All Projects
+app.get("/api/v1/projects", getAllProjects);
+
+// Create Project
+app.post("/api/v1/projects", createProject);
+
+// Get Single Project
+app.get("/api/v1/projects/:id", getSingleProject);
+
+// // Edit Project
+app.patch("/api/v1/projects/:id", updateProject);
+
+// // Delete Project
+app.delete("/api/v1/projects/:id", deleteProject);
 
 const port = process.env.PORT || 3000;
 
