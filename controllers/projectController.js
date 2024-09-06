@@ -1,4 +1,3 @@
-import { NotFoundError } from "../errors/customErrors.js";
 import Project from "../models/ProjectModel.js";
 import { StatusCodes } from "http-status-codes";
 
@@ -19,8 +18,6 @@ export const getProject = async (req, res) => {
   const { id } = req.params;
   const project = await Project.findById(id);
 
-  if (!project) throw new NotFoundError(`No project found with id ${id}.`);
-
   res.status(StatusCodes.OK).json({ project });
 };
 
@@ -32,9 +29,6 @@ export const updateProject = async (req, res) => {
     new: true, // Inside this options object, new: true = Get Updated Project. By default you get the old Project, not Updated one.
   });
 
-  if (!updateProject)
-    throw new NotFoundError(`No project found with id ${id}.`);
-
   res.status(StatusCodes.OK).json({ project: updatedProject });
 };
 
@@ -43,8 +37,5 @@ export const deleteProject = async (req, res) => {
   const { id } = req.params;
   const removedProject = await Project.findByIdAndDelete(id);
 
-  if (!removedProject)
-    throw new NotFoundError(`No project found with id ${id}.`);
-
-  res.status(200).json({ msg: "Project deleted." });
+  res.status(200).json({ msg: "Project deleted.", project: removedProject });
 };

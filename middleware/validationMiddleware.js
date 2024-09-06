@@ -2,6 +2,7 @@ import { body, param, validationResult } from "express-validator";
 import { BadRequestError } from "../errors/customErrors.js";
 import { PROJECT_STATUS } from "../root-utils/constants.js";
 import mongoose from "mongoose";
+import Project from "../models/ProjectModel.js";
 
 const withValidationErrors = (validateValues) => {
   return [
@@ -34,9 +35,15 @@ export const validateProjectInput = withValidationErrors([
 ]);
 
 export const validateIdParam = withValidationErrors([
-  param("id")
-    .custom((value) => {
-      return mongoose.Types.ObjectId.isValid(value);
-    })
-    .withMessage("Invalid MongoDB id."), // .custom() = custom function
+  param("id").custom(async (value) => {
+    const isValidMongoId = mongoose.Types.ObjectId.isValid(value);
+
+    if (!isValidMongoId) throw new BadRequestError(" invalid MongoDb id");
+
+    const project = await Project.findById(value);
+
+    if (!project) throw new NotFoundError(` no project found with id ${value}`);
+  }),
 ]);
+
+// .custom() = custom function
