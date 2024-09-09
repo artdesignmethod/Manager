@@ -3,6 +3,7 @@ import { BadRequestError } from "../errors/customErrors.js";
 import { PROJECT_STATUS } from "../root-utils/constants.js";
 import mongoose from "mongoose";
 import Project from "../models/ProjectModel.js";
+import User from "../models/UserModel.js";
 
 const withValidationErrors = (validateValues) => {
   return [
@@ -48,6 +49,41 @@ export const validateIdParam = withValidationErrors([
 
     if (!project) throw new NotFoundError(` no project found with id ${value}`);
   }),
+]);
+
+export const validateRegisterInput = withValidationErrors([
+  body("firstName")
+    .notEmpty()
+    .withMessage(" first name required")
+    .isLength({ min: 2, max: 16 })
+    .withMessage(" first name must be between 2 and 16 characters long"),
+
+  body("lastName")
+    .notEmpty()
+    .withMessage(" last name required")
+    .isLength({ min: 2, max: 16 })
+    .withMessage(" last name must be between 2 and 16 characters long"),
+
+  body("email")
+    .notEmpty()
+    .withMessage(" email is required")
+    .isEmail()
+    .withMessage(" invalid email format")
+    .isLength({ min: 5 })
+    .withMessage(" email must be at least 5 characters long")
+    .custom(async (email) => {
+      const user = await User.findOne({ email });
+
+      if (user) {
+        throw new BadRequestError(" email already registered");
+      }
+    }),
+
+  body("password")
+    .notEmpty()
+    .withMessage(" password is required")
+    .isLength({ min: 8 })
+    .withMessage(" password must be at least 8 characters long"),
 ]);
 
 // .custom() = custom function
