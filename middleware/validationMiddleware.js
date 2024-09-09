@@ -106,4 +106,33 @@ export const validateLoginInput = withValidationErrors([
   body("password").notEmpty().withMessage(" password is required"),
 ]);
 
+export const validateUpdateUserInput = withValidationErrors([
+  body("firstName")
+    .notEmpty()
+    .withMessage(" first name is required")
+    .isLength({ min: 2, max: 16 })
+    .withMessage(" first name must be between 2 and 16 characters long"),
+
+  body("lastName")
+    .notEmpty()
+    .withMessage(" last name is required")
+    .isLength({ min: 2, max: 16 })
+    .withMessage(" last name must be between 2 and 16 characters long"),
+
+  body("email")
+    .notEmpty()
+    .withMessage(" email is required")
+    .isEmail()
+    .withMessage(" invalid email format")
+    .isLength({ min: 5 })
+    .withMessage(" email must be at least 5 characters long")
+    .custom(async (email, { req }) => {
+      const user = await User.findOne({ email });
+
+      if (user && user._id.toString() !== req.user.userId) {
+        throw new BadRequestError(" email already registered");
+      }
+    }),
+]);
+
 // .custom() = custom function

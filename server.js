@@ -10,6 +10,7 @@ import cookieParser from "cookie-parser";
 // Router Imports
 import projectRouter from "./routes/projectRouter.js";
 import authRouter from "./routes/authRouter.js";
+import userRouter from "./routes/userRouter.js";
 
 // Middleware Imports
 import errorHandlerMiddleware from "./middleware/errorHandlerMiddleware.js";
@@ -29,6 +30,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/v1/projects", authenticateUser, projectRouter);
+
+app.use("/api/v1/users", authenticateUser, userRouter);
 
 app.use("/api/v1/auth", authRouter);
 
