@@ -17,6 +17,10 @@ const withValidationErrors = (validateValues) => {
           throw new NotFoundError(errorMessages);
         }
 
+        if (errorMessages[0].startsWith(" not authorized")) {
+          throw new UnauthorizedError(" not authorized to access this route");
+        }
+
         throw new BadRequestError(errorMessages);
       }
       next();
@@ -49,9 +53,10 @@ export const validateIdParam = withValidationErrors([
 
     if (!project) throw new NotFoundError(` no project found with id ${value}`);
 
+    const isAdmin = req.user.role === "admin";
     const isOwner = req.user.userId === project.createdBy.toString();
 
-    if (!isOwner)
+    if (!isAdmin && !isOwner)
       throw new UnauthorizedError(" not authorized to access this route");
   }),
 ]);
