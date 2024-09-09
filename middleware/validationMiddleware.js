@@ -48,6 +48,11 @@ export const validateIdParam = withValidationErrors([
     const project = await Project.findById(value);
 
     if (!project) throw new NotFoundError(` no project found with id ${value}`);
+
+    const isOwner = req.user.userId === project.createdBy.toString();
+
+    if (!isOwner)
+      throw new UnauthorizedError(" not authorized to access this route");
   }),
 ]);
 
@@ -84,6 +89,16 @@ export const validateRegisterInput = withValidationErrors([
     .withMessage(" password is required")
     .isLength({ min: 8 })
     .withMessage(" password must be at least 8 characters long"),
+]);
+
+export const validateLoginInput = withValidationErrors([
+  body("email")
+    .notEmpty()
+    .withMessage(" email is required")
+    .isEmail()
+    .withMessage(" invalid email format"),
+
+  body("password").notEmpty().withMessage(" password is required"),
 ]);
 
 // .custom() = custom function

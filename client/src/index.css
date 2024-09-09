@@ -365,6 +365,7 @@ button:disabled {
   display: flex;
   justify-content: center;
   column-gap: 1.6rem;
+  list-style: none;
 }
 
 .btn-hero:link,
