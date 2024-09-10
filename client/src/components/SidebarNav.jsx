@@ -6,17 +6,9 @@ import { TbLayoutSidebarRightCollapseFilled } from "react-icons/tb";
 import { TbLayoutSidebarLeftCollapseFilled } from "react-icons/tb";
 import { FaShieldAlt } from "react-icons/fa";
 import { useDashboardContext } from "../pages/DashboardLayout";
-// import { toast } from "react-toastify";
 
 const SidebarNav = () => {
   const { resizeSidebar, toggleSidebar } = useDashboardContext();
-
-  // const logoutUser = async () => {
-  //   navigate("/");
-  //   await customFetch("/auth/logout");
-  //   QueryClient.invalidateQueries();
-  //   toast.success("You have logged out.");
-  // };
 
   return (
     <aside className={resizeSidebar ? "sidebar" : "sidebar expand-sidebar"}>
@@ -51,7 +43,7 @@ const SidebarNav = () => {
           </li>
 
           <li>
-            <NavLink className="sidebar-nav-link" to="profile">
+            <NavLink className="sidebar-nav-link" to="admin">
               <FaShieldAlt className="sidebar-icon" />
 
               <div className={resizeSidebar ? "hide-sidebar-text" : ""}>

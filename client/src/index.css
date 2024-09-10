@@ -94,7 +94,7 @@ html {
   --shadow-input-focus: 0 4px 32px 0 rgba(18, 18, 18, 0.248);
 
   /* GENERAL */
-  --mobile-button-bar: var(--violet-primary);
+  --mobile-button-bar: var(--indigo-600);
   --transition: 0.3s ease-in-out all;
 }
 
@@ -406,6 +406,50 @@ button:disabled {
   transform: translateY(-3px);
 }
 
+/*********** LOADER ***********/
+.loading-section {
+  background: var(--light-theme-background);
+  border-radius: var(--border-radius-26);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  padding: 2.4rem;
+}
+
+.loading-section-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.loading-section .heading-secondary {
+  color: var(--light-theme-700);
+  font-family: "Fugaz One", Arial, Helvetica, sans-serif;
+  font-size: 4rem;
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+  margin: 0;
+}
+
+.loading {
+  color: var(--light-theme-700);
+  height: 4.2rem;
+  width: 4.2rem;
+  margin-bottom: 0.6rem;
+  animation: rotate-loader 1s infinite linear;
+}
+
+@keyframes rotate-loader {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 /*********** DASHBOARD ***********/
 .dashboard {
   background: #f4f7fe;
@@ -688,7 +732,7 @@ button:disabled {
 
 .btn-mobile-nav {
   position: absolute;
-  top: 2.4rem;
+  top: 2.7rem;
   left: 3.2rem;
   border: none;
   background: none;

@@ -17,6 +17,7 @@ import {
 
 import { action as registerAction } from "./pages/Register";
 import { action as loginAction } from "./pages/Login";
+import { loader as dashboardLoader } from "./pages/DashboardLayout";
 import { action as addProjectAction } from "./pages/AddProject";
 // import { loader as editProjectLoader } from "./pages/EditProject";
 // import { action as editProjectAction } from "./pages/EditProject";
@@ -51,13 +52,14 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <Login />,
-        action: loginAction(queryClient),
+        action: loginAction,
       },
       { path: "error", element: <Error /> },
 
       {
         path: "dashboard",
         element: <DashboardLayout queryClient={queryClient} />,
+        loader: dashboardLoader,
         children: [
           {
             index: true,

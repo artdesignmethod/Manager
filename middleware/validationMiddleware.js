@@ -12,6 +12,9 @@ const withValidationErrors = (validateValues) => {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         const errorMessages = errors.array().map((error) => error.msg); // msg is built in
+        const firstMessage = errorMessages[0];
+
+        console.log(Object.getPrototypeOf(firstMessage));
 
         if (errorMessages[0].startsWith(" no project")) {
           throw new NotFoundError(errorMessages);
@@ -20,7 +23,6 @@ const withValidationErrors = (validateValues) => {
         if (errorMessages[0].startsWith(" not authorized")) {
           throw new UnauthorizedError(" not authorized to access this route");
         }
-
         throw new BadRequestError(errorMessages);
       }
       next();
@@ -44,7 +46,7 @@ export const validateProjectInput = withValidationErrors([
 ]);
 
 export const validateIdParam = withValidationErrors([
-  param("id").custom(async (value) => {
+  param("id").custom(async (value, { req }) => {
     const isValidMongoId = mongoose.Types.ObjectId.isValid(value);
 
     if (!isValidMongoId) throw new BadRequestError(" invalid MongoDb id");
@@ -58,7 +60,7 @@ export const validateIdParam = withValidationErrors([
 
     if (!isAdmin && !isOwner)
       throw new UnauthorizedError(" not authorized to access this route");
-  }),
+  }), // custom function
 ]);
 
 export const validateRegisterInput = withValidationErrors([

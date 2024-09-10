@@ -1,9 +1,9 @@
-import { FaRegUserCircle } from "react-icons/fa";
+import { useDashboardContext } from "../pages/DashboardLayout";
 import Logo from "./Logo";
+import { FaRegUserCircle } from "react-icons/fa";
 import { LuLogOut } from "react-icons/lu";
 import { NavLink } from "react-router-dom";
 import avatar from "../assets/images/avatar.png";
-import { useDashboardContext } from "../pages/DashboardLayout";
 import ThemeToggle from "./ThemeToggle";
 
 const DashboardNav = () => {
@@ -34,9 +34,8 @@ const DashboardNav = () => {
           >
             <div className="button-content flex">
               <img src={avatar} className="avatar-image" alt="avatar image" />
-              {/* <FaRegUserCircle className="sidebar-icon" />
-              Username */}
-              {user?.name}
+
+              {user?.firstName}
             </div>
           </button>
         </li>
