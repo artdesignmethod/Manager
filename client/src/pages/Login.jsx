@@ -56,7 +56,6 @@ const Login = () => {
               labelText="Your email address"
               inputClass="homepage-form-input"
               type="email"
-              defaultValue="test@example.com"
               minLength="5"
               name="email"
             />
@@ -64,7 +63,6 @@ const Login = () => {
             <FormRow
               labelText="Your password"
               inputClass="homepage-form-input"
-              defaultValue="password"
               type="password"
               minLength="8"
               maxLength="16"

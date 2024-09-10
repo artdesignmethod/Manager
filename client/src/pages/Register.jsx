@@ -42,7 +42,6 @@ const Register = () => {
                   labelText="First name"
                   inputClass="homepage-form-input"
                   type="text"
-                  defaultValue="Register"
                   name="firstName"
                 />
 
@@ -50,7 +49,6 @@ const Register = () => {
                   labelText="Last name"
                   inputClass="homepage-form-input"
                   type="text"
-                  defaultValue="Doe"
                   name="lastName"
                 />
               </div>
@@ -58,7 +56,6 @@ const Register = () => {
               <FormRow
                 labelText="Email address"
                 inputClass="homepage-form-input"
-                defaultValue="test@example.com"
                 type="email"
                 name="email"
               />
@@ -66,7 +63,6 @@ const Register = () => {
               <FormRow
                 labelText="Password"
                 inputClass="homepage-form-input"
-                defaultValue="password"
                 type="password"
                 name="password"
               />
