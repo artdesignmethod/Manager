@@ -3,7 +3,7 @@ import Logo from "./Logo";
 import { FaRegUserCircle } from "react-icons/fa";
 import { LuLogOut } from "react-icons/lu";
 import { NavLink } from "react-router-dom";
-import avatar from "../assets/images/avatar.png";
+import defaultAvatar from "../assets/images/avatar.png";
 import ThemeToggle from "./ThemeToggle";
 
 const DashboardNav = () => {
@@ -33,9 +33,16 @@ const DashboardNav = () => {
             onClick={toggleDropdown}
           >
             <div className="button-content flex">
-              <img src={avatar} className="avatar-image" alt="avatar image" />
-
-              {user?.firstName}
+              {user.avatar ? (
+                <img src={user.avatar} className="avatar-image" alt="avatar" />
+              ) : (
+                <img
+                  src={defaultAvatar}
+                  className="avatar-image"
+                  alt="avatar"
+                />
+              )}
+              <p className="avatar-name">{user?.firstName}</p>
             </div>
           </button>
         </li>
