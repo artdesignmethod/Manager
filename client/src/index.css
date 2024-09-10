@@ -134,6 +134,11 @@ body {
 }
 
 /*********** GENERAL ***********/
+.toast {
+  font-size: 1.6rem;
+  letter-spacing: 0.35px;
+}
+
 /* DARK THEME */
 .dark-theme .dashboard,
 .dark-theme .sidebar,

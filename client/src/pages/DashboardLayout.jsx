@@ -1,24 +1,20 @@
 /* eslint-disable react/prop-types */
 import { createContext, useContext, useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
+
+import { toast } from "react-toastify";
+import customFetch from "../utils/customFetch";
 
 import SidebarNav from "../components/SidebarNav";
 import DashboardNav from "../components/DashboardNav";
 import MobileNav from "../components/MobileNav";
 import { checkDefaultTheme } from "../App";
 
-// import { toast } from "react-toastify";
-
-// const logoutUser = async () => {
-//   navigate("/");
-//   await customFetch("/auth/logout");
-//   QueryClient.invalidateQueries();
-//   toast.success("You have logged out.");
-// };
-
 const DashboardContext = createContext();
 
 const DashboardLayout = () => {
+  const navigate = useNavigate();
+
   const [resizeSidebar, setResizeSidebar] = useState(false);
 
   const [showDropdown, setShowDropdown] = useState(false);
@@ -55,8 +51,10 @@ const DashboardLayout = () => {
   }
 
   const logoutUser = async () => {
-    console.log("User logged out.");
     closeDropdown();
+    navigate("/");
+    await customFetch("/auth/logout");
+    toast.success("You have logged out");
   };
 
   return (

@@ -29,11 +29,11 @@ const Register = () => {
         <Form method="POST" className="flex homepage-form">
           <Logo />
 
-          <h3 className="heading-tertiary">Create your account</h3>
+          <h3 className="heading-tertiary">Create account</h3>
 
           <div className="register-form-inputs-container">
             <p className="homepage-form-description">
-              Please enter your details below to sign up:
+              Please enter your details to sign up:
             </p>
 
             <div className="register-contact-section">
@@ -42,9 +42,7 @@ const Register = () => {
                   labelText="First name"
                   inputClass="homepage-form-input"
                   type="text"
-                  defaultValue="John"
-                  minLength="1"
-                  maxLength="14"
+                  defaultValue="Register"
                   name="firstName"
                 />
 
@@ -53,8 +51,6 @@ const Register = () => {
                   inputClass="homepage-form-input"
                   type="text"
                   defaultValue="Doe"
-                  minLength="1"
-                  maxLength="14"
                   name="lastName"
                 />
               </div>
@@ -64,7 +60,6 @@ const Register = () => {
                 inputClass="homepage-form-input"
                 defaultValue="test@example.com"
                 type="email"
-                minLength="5"
                 name="email"
               />
 
@@ -73,8 +68,6 @@ const Register = () => {
                 inputClass="homepage-form-input"
                 defaultValue="password"
                 type="password"
-                minLength="8"
-                maxLength="16"
                 name="password"
               />
             </div>
