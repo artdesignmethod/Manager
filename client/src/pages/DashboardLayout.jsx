@@ -30,7 +30,6 @@ const DashboardContext = createContext();
 
 const DashboardLayout = () => {
   const { user } = useLoaderData();
-  // console.log(user);
 
   const navigate = useNavigate();
 
@@ -73,7 +72,7 @@ const DashboardLayout = () => {
   const logoutUser = async () => {
     closeDropdown();
     navigate("/");
-    await customFetch("/auth/logout");
+    await customFetch.get("/auth/logout");
     toast.success("You have logged out");
   };
 
