@@ -4,21 +4,21 @@ import { toast } from "react-toastify";
 import customFetch from "../utils/customFetch";
 import { PROJECT_STATUS } from "../../../root-utils/constants";
 
-export const action =
-  (queryClient) =>
-  async ({ request }) => {
-    const formData = await request.formData();
-    const data = Object.fromEntries(formData);
-    try {
-      await customFetch.post("/projects", data);
-      queryClient.invalidateQueries(["projects"]);
-      toast.success("Project added successfully ");
-      return redirect("all-projects");
-    } catch (error) {
-      toast.error(error?.response?.data?.msg);
-      return error;
-    }
-  };
+export const action = async ({ request }) => {
+  const formData = await request.formData();
+  const data = Object.fromEntries(formData);
+
+  try {
+    await customFetch.post("/projects", data);
+
+    toast.success("Project added successfully ");
+
+    return redirect("all-projects");
+  } catch (error) {
+    toast.error(error?.response?.data?.msg);
+    return error;
+  }
+};
 
 const AddProject = () => {
   return (

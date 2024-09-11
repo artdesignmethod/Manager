@@ -19,6 +19,7 @@ import { action as registerAction } from "./pages/Register";
 import { action as loginAction } from "./pages/Login";
 import { loader as dashboardLoader } from "./pages/DashboardLayout";
 import { action as addProjectAction } from "./pages/AddProject";
+import { loader as allProjectsLoader } from "./pages/AllProjects";
 // import { loader as editProjectLoader } from "./pages/EditProject";
 // import { action as editProjectAction } from "./pages/EditProject";
 import { action as deleteProjectAction } from "./pages/DeleteProject";
@@ -64,12 +65,13 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <AddProject />,
-            action: addProjectAction(queryClient),
+            action: addProjectAction,
           },
           { path: "stats", element: <Stats /> },
           {
             path: "all-projects",
             element: <AllProjects />,
+            loader: allProjectsLoader,
             errorElement: <ErrorElement />,
           },
           {

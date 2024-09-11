@@ -1,14 +1,36 @@
 /* eslint-disable react/prop-types */
 
+import { toast } from "react-toastify";
 import { SearchContainer, ProjectsContainer } from "../components";
+import customFetch from "../utils/customFetch";
+import { useLoaderData } from "react-router-dom";
+import { useContext, createContext } from "react";
+
+export const loader = async () => {
+  try {
+    const { data } = await customFetch.get("/projects");
+    return {
+      data,
+    };
+  } catch (error) {
+    toast.error(error?.response?.data?.msg);
+    return error;
+  }
+};
+
+const AllProjectsContext = createContext();
 
 const AllProjects = () => {
+  const { data } = useLoaderData();
+
   return (
-    <div className="projects-section">
+    <AllProjectsContext.Provider value={{ data }}>
       <SearchContainer />
       <ProjectsContainer />
-    </div>
+    </AllProjectsContext.Provider>
   );
 };
+
+export const useAllProjectsContext = () => useContext(AllProjectsContext);
 
 export default AllProjects;

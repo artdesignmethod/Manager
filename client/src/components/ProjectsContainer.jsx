@@ -1,13 +1,12 @@
 /* eslint-disable react/prop-types */
-// import { useAllProjectsContext } from "../pages/AllProjects";
+import { useAllProjectsContext } from "../pages/AllProjects";
 import { MdQueueMusic } from "react-icons/md";
 import { Project } from "../components";
-// import PaginationContainer from "./PaginationContainer";
 
 const ProjectsContainer = ({ totalProjects }) => {
-  // const { data } = useAllProjectsContext();
+  const { data } = useAllProjectsContext();
 
-  // const { projects, totalProjects, numOfPages } = data;s
+  const { projects } = data;
 
   return (
     <section className="project-container">
@@ -16,7 +15,7 @@ const ProjectsContainer = ({ totalProjects }) => {
           <MdQueueMusic className="overview-icon" />
 
           <div className="overview-text-group flex">
-            <p className="total-projects">
+            <p className="overview-subhead">
               {totalProjects >= 0 ? totalProjects : 0}
             </p>
 
@@ -28,10 +27,9 @@ const ProjectsContainer = ({ totalProjects }) => {
       <p className="projects-section-heading">Projects</p>
 
       <div className="projects-container grid grid-cols-4">
-        {/* {projects.map((project, i) => {
-          return <Project key={i} {...project} />;
-        })} */}
-        <Project />
+        {projects.map((project) => {
+          return <Project key={project._id} {...project} />;
+        })}
       </div>
 
       {/* {numOfPages > 1 && <PaginationContainer />} */}

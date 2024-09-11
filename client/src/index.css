@@ -1177,18 +1177,9 @@ input::-webkit-inner-spin-button {
   border-radius: var(--border-radius-26);
 }
 
-/********** ALL PROJECTS PAGE *********/
+/*********** PROJECTS SECTION ***********/
 .projects-section {
   height: 100%;
-}
-
-.projects-section-heading {
-  color: var(--light-theme-800);
-  font-size: 2.4rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  margin-bottom: 2.4rem;
-  width: 100%;
 }
 
 .projects-overview-container {
@@ -1197,8 +1188,12 @@ input::-webkit-inner-spin-button {
   border-radius: 1.2rem;
   color: #374151;
   display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3.2rem 4.8rem;
   margin-bottom: 3.2rem;
-  padding: 2.4rem;
+  padding: 3.2rem;
 }
 
 .overview-group {
@@ -1206,6 +1201,7 @@ input::-webkit-inner-spin-button {
   align-items: center;
   column-gap: 0.8rem;
 }
+
 .overview-text-group {
   flex-direction: column;
   justify-content: space-between;
@@ -1222,31 +1218,61 @@ input::-webkit-inner-spin-button {
   width: 3.8rem;
 }
 
-.total-projects {
-  font-size: 2rem;
-  font-weight: 500;
+.overview-icon.completed {
+  background: #14b8a6;
+}
+
+.overview-icon.scheduled {
+  background: #fb7185;
+}
+
+.overview-icon.production {
+  background: #3b82f6;
+}
+
+.overview-subhead {
+  color: #334155;
+  font-size: 2.2rem;
+  font-weight: 600;
 }
 
 .overview-description {
-  color: #0000007e;
+  color: #475569;
   font-size: 1.2rem;
   font-weight: 500;
+  letter-spacing: var(--letter-spacing-8);
+  text-transform: uppercase;
+}
+
+.projects-section-heading {
+  color: var(--light-theme-800);
+  font-size: 2.4rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 5.2rem;
+  width: 100%;
+}
+
+.projects-section-heading .light-button-violet {
+  margin: 0;
 }
 
 .projects-container {
-  gap: 3.2rem;
+  gap: 6.4rem 3.2rem;
   grid-auto-flow: dense;
+  margin-bottom: 3.2rem;
 }
 
 .project-card {
   background-color: #fff;
-  box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.07);
+  box-shadow: var(--shadow-light);
   border-radius: 1.2rem;
   color: #374151;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2.4rem;
+  padding: 1.6rem;
   height: 100%;
   width: 100%;
 }
@@ -1256,11 +1282,13 @@ input::-webkit-inner-spin-button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  row-gap: 1.6rem;
 }
 
 .project-img {
   border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.08);
+  border: 2px solid #fff;
+  box-shadow: var(--shadow-light);
   display: block;
   margin-top: -40px;
   margin-bottom: 3.2rem;
@@ -1270,29 +1298,73 @@ input::-webkit-inner-spin-button {
 }
 
 .project-card-label {
-  font-size: 1.8rem;
-  font-weight: 800;
+  font-size: 2rem;
+  font-weight: 700;
   letter-spacing: 0.5px;
-  margin-bottom: 2.4rem;
   width: 100%;
 }
 
-.project-card-date {
-  font-size: 1.4rem;
-  font-weight: 400;
-  letter-spacing: 0.7px;
-  margin-bottom: 2.4rem;
+.project-card-group {
+  column-gap: 2.4rem;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.project-card-tag {
-  box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.07);
-  border-right: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--border-radius-26);
+.project-card-tag-group {
+  column-gap: 1.6rem;
+  margin-bottom: 0.8rem;
+}
+
+.project-card-price-group {
+  column-gap: 3.2rem;
+}
+
+.project-card-date {
+  color: #413f3f;
   font-size: 1.4rem;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 0.7px;
-  margin-bottom: 2.4rem;
-  padding: 0.6rem 1.2rem;
+}
+
+.project-length {
+  display: flex;
+  align-items: center;
+  column-gap: 0.4rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.7px;
+}
+
+.project-length-icon {
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-bottom: 0.3rem;
+}
+
+.project-card-status {
+  display: flex;
+  align-items: center;
+  column-gap: 0.8rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.7px;
+}
+
+.project-status-icon {
+  height: 1.8rem;
+  width: 1.8rem;
+}
+
+.project-status-icon.scheduled {
+  color: #f87171;
+}
+
+.project-status-icon.production {
+  color: #3b82f6;
+}
+
+.project-status-icon.completed {
+  color: #14b8a6;
 }
 
 .project-card-price {
@@ -1300,22 +1372,11 @@ input::-webkit-inner-spin-button {
   font-weight: 500;
 }
 
-.project-button {
+.delete-project-button {
   background: none;
-  outline: none;
   border: none;
-}
-
-.project-card-group {
-  align-items: center;
-  justify-content: space-between;
-}
-
-.project-card-tag-group {
-  column-gap: 1.6rem;
-}
-.project-card-price-group {
-  column-gap: 3.2rem;
+  outline: none;
+  cursor: pointer;
 }
 
 .project-icon-group {
@@ -1323,7 +1384,7 @@ input::-webkit-inner-spin-button {
 }
 
 .project-icon {
-  box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.07);
+  box-shadow: var(--shadow-light);
   border-right: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 50%;
   color: #374151;
@@ -1331,7 +1392,6 @@ input::-webkit-inner-spin-button {
   height: 3rem;
   width: 3rem;
 }
-
 /********** REGISTER PAGE *********/
 
 .register-section,
