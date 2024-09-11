@@ -20,8 +20,8 @@ import { action as loginAction } from "./pages/Login";
 import { loader as dashboardLoader } from "./pages/DashboardLayout";
 import { action as addProjectAction } from "./pages/AddProject";
 import { loader as allProjectsLoader } from "./pages/AllProjects";
-// import { loader as editProjectLoader } from "./pages/EditProject";
-// import { action as editProjectAction } from "./pages/EditProject";
+import { loader as editProjectLoader } from "./pages/EditProject";
+import { action as editProjectAction } from "./pages/EditProject";
 import { action as deleteProjectAction } from "./pages/DeleteProject";
 import { action as profileAction } from "./pages/Profile";
 import ErrorElement from "./components/ErrorElement";
@@ -81,10 +81,10 @@ const router = createBrowserRouter([
           },
           { path: "admin", element: <Admin /> },
           {
-            path: "edit-project",
+            path: "edit-project/:id",
             element: <EditProject />,
-            // loader: editProjectLoader(queryClient),
-            // action: editProjectAction(queryClient),
+            loader: editProjectLoader,
+            action: editProjectAction,
           },
           {
             path: "delete-project/:id",

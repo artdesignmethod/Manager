@@ -1,52 +1,46 @@
 import { FormRow, FormRowSelect, SubmitButton } from "../components";
-// import { useLoaderData, Form, redirect } from "react-router-dom";
+import { useLoaderData, Form, redirect } from "react-router-dom";
 import { PROJECT_STATUS } from "../../../root-utils/constants";
 import { toast } from "react-toastify";
 import customFetch from "../utils/customFetch";
-import { Form, redirect } from "react-router-dom";
 // import { useQuery } from "@tanstack/react-query";
 
-const singleProjectQuery = (id) => {
-  return {
-    queryKey: ["project", id],
-    queryFn: async () => {
-      const { data } = await customFetch.get(`/projects/${id}`);
-      return data;
-    },
-  };
+// const singleProjectQuery = (id) => {
+//   return {
+//     queryKey: ["project", id],
+//     queryFn: async () => {
+//       const { data } = await customFetch.get(`/projects/${id}`);
+//       return data;
+//     },
+//   };
+// };
+
+export const loader = async ({ params }) => {
+  try {
+    const { data } = await customFetch.get(`/projects/${params.id}`);
+    return data;
+  } catch (error) {
+    toast.error(error?.response?.data?.msg);
+    return redirect("/dashboard/all-projects");
+  }
 };
 
-export const loader =
-  (queryClient) =>
-  async ({ params }) => {
-    try {
-      await queryClient.ensureQueryData(singleProjectQuery(params.id));
-      return params.id;
-    } catch (error) {
-      toast.error(error?.response?.data?.msg);
-      return redirect("/dashboard/all-projects");
-    }
-  };
+export const action = async ({ request, params }) => {
+  const formData = await request.formData();
+  const data = Object.fromEntries(formData);
+  try {
+    await customFetch.patch(`/projects/${params.id}`, data);
 
-export const action =
-  (queryClient) =>
-  async ({ request, params }) => {
-    const formData = await request.formData();
-    const data = Object.fromEntries(formData);
-    try {
-      await customFetch.patch(`/projects/${params.id}`, data);
-      queryClient.invalidateQueries(["projects"]);
-
-      toast.success("Project edited successfully");
-      return redirect("/dashboard/all-projects");
-    } catch (error) {
-      toast.error(error?.response?.data?.msg);
-      return error;
-    }
-  };
+    toast.success("Project edited successfully");
+    return redirect("/dashboard/all-projects");
+  } catch (error) {
+    toast.error(error?.response?.data?.msg);
+    return error;
+  }
+};
 
 const EditProject = () => {
-  const project = {}; // Temporary
+  const { project } = useLoaderData();
 
   // const id = useLoaderData();
   // const {
@@ -117,7 +111,7 @@ const EditProject = () => {
 
         <SubmitButton
           className="light-form-button"
-          Submitting="Adding new project"
+          Submitting="Submitting"
           Submit="Submit"
         />
       </Form>
