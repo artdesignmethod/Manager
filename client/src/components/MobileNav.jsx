@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { FaRegUserCircle, FaShieldAlt } from "react-icons/fa";
-import { PiMicrophoneBold } from "react-icons/pi";
-import { TbMusicPlus } from "react-icons/tb";
 import { NavLink } from "react-router-dom";
+
+// Icons
+import { FaUserCircle, FaShieldAlt } from "react-icons/fa";
+import { HiDocumentPlus, HiDocumentChartBar } from "react-icons/hi2";
 
 const MobileNav = () => {
   const [mobileBtnClass, setMobileBtnClass] = useState("btn-mobile-nav");
@@ -55,7 +56,7 @@ const MobileNav = () => {
               to="/dashboard"
               onClick={closeNav}
             >
-              <TbMusicPlus className="mobile-nav-icon" />
+              <HiDocumentPlus className="mobile-nav-link-icon" />
               Add Project
             </NavLink>
           </li>
@@ -66,7 +67,7 @@ const MobileNav = () => {
               to="all-projects"
               onClick={closeNav}
             >
-              <PiMicrophoneBold className="mobile-nav-icon" />
+              <HiDocumentChartBar className="mobile-nav-link-icon" />
               All Projects
             </NavLink>
           </li>
@@ -77,7 +78,7 @@ const MobileNav = () => {
               to="profile"
               onClick={closeNav}
             >
-              <FaRegUserCircle className="mobile-nav-icon" />
+              <FaUserCircle className="mobile-nav-link-icon" />
               My Profile
             </NavLink>
           </li>
@@ -88,7 +89,7 @@ const MobileNav = () => {
               to="profile"
               onClick={closeNav}
             >
-              <FaShieldAlt className="mobile-nav-icon" />
+              <FaShieldAlt className="mobile-nav-link-icon" />
               Admin
             </NavLink>
           </li>

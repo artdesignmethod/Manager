@@ -6,6 +6,7 @@ import {
   createProject,
   updateProject,
   deleteProject,
+  showStats,
 } from "../controllers/projectController.js";
 
 import {
@@ -15,6 +16,8 @@ import {
 
 const router = Router();
 router.route("/").get(getAllProjects).post(validateProjectInput, createProject);
+
+router.route("/stats").get(showStats);
 
 router
   .route("/:id")

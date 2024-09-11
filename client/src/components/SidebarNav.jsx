@@ -1,11 +1,13 @@
 import { NavLink } from "react-router-dom";
-import { TbMusicPlus } from "react-icons/tb";
-import { PiMicrophoneBold } from "react-icons/pi";
-import { FaRegUserCircle } from "react-icons/fa";
-import { TbLayoutSidebarRightCollapseFilled } from "react-icons/tb";
-import { TbLayoutSidebarLeftCollapseFilled } from "react-icons/tb";
-import { FaShieldAlt } from "react-icons/fa";
 import { useDashboardContext } from "../pages/DashboardLayout";
+
+// Icons
+import { FaUserCircle, FaShieldAlt } from "react-icons/fa";
+import {
+  TbLayoutSidebarRightCollapseFilled,
+  TbLayoutSidebarLeftCollapseFilled,
+} from "react-icons/tb";
+import { HiDocumentPlus, HiDocumentChartBar } from "react-icons/hi2";
 
 const SidebarNav = () => {
   const { resizeSidebar, toggleSidebar } = useDashboardContext();
@@ -16,7 +18,8 @@ const SidebarNav = () => {
         <ul className="sidebar-nav-list">
           <li>
             <NavLink className="sidebar-nav-link" to="/dashboard">
-              <TbMusicPlus className="sidebar-icon" />
+              <HiDocumentPlus className="sidebar-icon" />
+
               <div className={resizeSidebar ? "hide-sidebar-text" : ""}>
                 Add Project
               </div>
@@ -25,23 +28,22 @@ const SidebarNav = () => {
 
           <li>
             <NavLink className="sidebar-nav-link" to="all-projects">
-              <PiMicrophoneBold className="sidebar-icon" />
+              <HiDocumentChartBar className="sidebar-icon" />
+
               <div className={resizeSidebar ? "hide-sidebar-text" : ""}>
                 Projects
               </div>
             </NavLink>
           </li>
-
           <li>
             <NavLink className="sidebar-nav-link" to="profile">
-              <FaRegUserCircle className="sidebar-icon" />
+              <FaUserCircle className="sidebar-icon" />
 
               <div className={resizeSidebar ? "hide-sidebar-text" : ""}>
-                Profile
+                My Profile
               </div>
             </NavLink>
           </li>
-
           <li>
             <NavLink className="sidebar-nav-link" to="admin">
               <FaShieldAlt className="sidebar-icon" />
@@ -51,7 +53,6 @@ const SidebarNav = () => {
               </div>
             </NavLink>
           </li>
-
           <li>
             <button
               className={
@@ -63,9 +64,9 @@ const SidebarNav = () => {
             >
               <div className="button-content flex">
                 {resizeSidebar ? (
-                  <TbLayoutSidebarRightCollapseFilled className="sidebar-icon" />
+                  <TbLayoutSidebarRightCollapseFilled className="sidebar-icon large" />
                 ) : (
-                  <TbLayoutSidebarLeftCollapseFilled className="sidebar-icon" />
+                  <TbLayoutSidebarLeftCollapseFilled className="sidebar-icon large" />
                 )}
                 <div className={resizeSidebar ? "hide-sidebar-text" : ""}>
                   Collapse
@@ -73,7 +74,6 @@ const SidebarNav = () => {
               </div>
             </button>
           </li>
-
           {/* <button type="button" className="logout-button">
             <div className="button-content flex">
             <LuLogOut className="sidebar-icon" />

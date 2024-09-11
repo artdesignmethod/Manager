@@ -9,8 +9,11 @@ import { useContext, createContext } from "react";
 export const loader = async () => {
   try {
     const { data } = await customFetch.get("/projects");
+    const { data: statData } = await customFetch.get("/projects/stats");
+
     return {
       data,
+      statData,
     };
   } catch (error) {
     toast.error(error?.response?.data?.msg);
@@ -21,10 +24,10 @@ export const loader = async () => {
 const AllProjectsContext = createContext();
 
 const AllProjects = () => {
-  const { data } = useLoaderData();
+  const { data, statData } = useLoaderData();
 
   return (
-    <AllProjectsContext.Provider value={{ data }}>
+    <AllProjectsContext.Provider value={{ data, statData }}>
       <SearchContainer />
       <ProjectsContainer />
     </AllProjectsContext.Provider>
