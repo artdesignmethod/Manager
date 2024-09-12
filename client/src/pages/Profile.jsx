@@ -1,32 +1,31 @@
-import { Form, redirect } from "react-router-dom";
+import { Form, redirect, useOutletContext } from "react-router-dom";
 import { FormRow, SubmitButton } from "../components";
 import customFetch from "../utils/customFetch";
 import { toast } from "react-toastify";
 
-export const action =
-  (queryClient) =>
-  async ({ request }) => {
-    const formData = await request.formData();
-    const avatar = formData.get("avatar");
-    if (avatar && avatar.size > 500000) {
-      toast.error("Image size limit is 0.5 MB");
-      return null;
-    }
-    try {
-      await customFetch.patch("/users/update-user", formData);
-      queryClient.invalidateQueries(["user"]);
-      toast.success("Profile updated successfully");
-      return redirect("/dashboard");
-    } catch (error) {
-      toast.error(error?.response?.data?.msg);
-      return null;
-    }
-  };
+export const action = async ({ request }) => {
+  const formData = await request.formData();
+  const avatar = formData.get("avatar");
+
+  if (avatar && avatar.size > 500000) {
+    toast.error("Image size limit is 0.5 MB");
+    return null;
+  }
+  try {
+    await customFetch.patch("/users/update-user", formData);
+
+    toast.success("Profile updated successfully");
+    return redirect("/dashboard");
+  } catch (error) {
+    toast.error(error?.response?.data?.msg);
+  }
+  return null;
+};
 
 const Profile = () => {
-  // const { user } = useOutletContext();
+  const { user } = useOutletContext();
 
-  // const { firstName, lastName, email } = user;
+  const { firstName, lastName, email } = user;
 
   return (
     <section className="dashboard-form-section grid grid-cols-2">
@@ -48,9 +47,7 @@ const Profile = () => {
                   labelText="First name"
                   type="text"
                   inputClass="light-input"
-                  defaultValue="John"
-                  minLength="1"
-                  maxLength="14"
+                  defaultValue={firstName}
                   name="firstName"
                 />
 
@@ -59,9 +56,7 @@ const Profile = () => {
                   labelText="Last name"
                   type="text"
                   inputClass="light-input"
-                  defaultValue="Doe"
-                  minLength="1"
-                  maxLength="14"
+                  defaultValue={lastName}
                   name="lastName"
                 />
               </div>
@@ -69,10 +64,9 @@ const Profile = () => {
               <FormRow
                 labelClass="dark-label"
                 labelText="Email address"
-                defaultValue="test@example.com"
                 type="email"
                 inputClass="light-input"
-                minLength="5"
+                defaultValue={email}
                 name="email"
               />
 

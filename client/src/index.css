@@ -161,7 +161,7 @@ body {
 }
 
 .dark-theme {
-  --light-theme-background: var(--dark-theme-gradient-background);
+  --light-theme-background: var(--dark-theme-background);
   --light-theme-900: var(--white);
   --light-theme-800: var(--white);
   --light-theme-700: var(--white);
@@ -484,7 +484,8 @@ button:disabled {
   padding: 3.2rem 3.2rem 9.6rem 3.2rem;
 }
 
-.theme-toggle-container {
+/*********** THEME TOGGLE ***********/
+.theme-toggle {
   cursor: pointer;
   display: flex;
   justify-content: end;
@@ -571,12 +572,10 @@ button:disabled {
 }
 
 .avatar-image {
-  background: #eeded9;
   border-radius: 50%;
   height: 4.4rem;
   width: 4.4rem;
   object-fit: cover;
-  padding: 0.6rem;
 }
 
 .nav-dropdown.show-dropdown {

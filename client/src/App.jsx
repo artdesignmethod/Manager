@@ -25,6 +25,7 @@ import { action as editProjectAction } from "./pages/EditProject";
 import { action as deleteProjectAction } from "./pages/DeleteProject";
 import { loader as adminLoader } from "./pages/Admin";
 import { action as profileAction } from "./pages/Profile";
+
 import ErrorElement from "./components/ErrorElement";
 
 export const checkDefaultTheme = () => {
@@ -78,7 +79,7 @@ const router = createBrowserRouter([
           {
             path: "profile",
             element: <Profile />,
-            action: profileAction(queryClient),
+            action: profileAction,
           },
           { path: "admin", element: <Admin />, loader: adminLoader },
           {
