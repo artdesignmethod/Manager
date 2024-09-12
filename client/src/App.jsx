@@ -23,6 +23,7 @@ import { loader as allProjectsLoader } from "./pages/AllProjects";
 import { loader as editProjectLoader } from "./pages/EditProject";
 import { action as editProjectAction } from "./pages/EditProject";
 import { action as deleteProjectAction } from "./pages/DeleteProject";
+import { loader as adminLoader } from "./pages/Admin";
 import { action as profileAction } from "./pages/Profile";
 import ErrorElement from "./components/ErrorElement";
 
@@ -79,7 +80,7 @@ const router = createBrowserRouter([
             element: <Profile />,
             action: profileAction(queryClient),
           },
-          { path: "admin", element: <Admin /> },
+          { path: "admin", element: <Admin />, loader: adminLoader },
           {
             path: "edit-project/:id",
             element: <EditProject />,

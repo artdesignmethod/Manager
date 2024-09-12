@@ -165,6 +165,7 @@ body {
   --light-theme-900: var(--white);
   --light-theme-800: var(--white);
   --light-theme-700: var(--white);
+  --light-theme-600: var(--white);
   --mobile-button-bar: var(--white);
 }
 
@@ -221,6 +222,7 @@ body {
 }
 
 .heading-tertiary {
+  color: var(--light-theme-800);
   font-size: 3.8rem;
   font-weight: 600;
   line-height: 1.2;
@@ -240,6 +242,13 @@ button:disabled {
   color: var(--white);
 }
 
+.col-gap-24 {
+  column-gap: 2.4rem;
+}
+
+.gap-24 {
+  gap: 2.4rem;
+}
 /******************************************
 /* HEADER & NAV
 /*******************************************/
@@ -1447,6 +1456,108 @@ input::-webkit-inner-spin-button {
     ),
     var(--login-image);
   background-position: center;
+}
+
+/********** ADMIN SECTION **********/
+.admin-section {
+  background: #fff;
+  border-radius: var(--border-radius-26);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.8rem;
+  height: 100%;
+  padding: 3.2rem;
+}
+
+.admin-overview-container {
+  gap: 2.4rem;
+  margin-bottom: 6.4rem;
+}
+
+.admin-overview-group {
+  background: #fff;
+  box-shadow: var(--shadow-light);
+  border-radius: 1.6rem;
+  color: #374151;
+  column-gap: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  padding: 2.4rem;
+}
+
+.admin-overview-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  line-height: 1;
+  row-gap: 0.6rem;
+}
+
+.admin-overview-description,
+.user-label {
+  color: #475569;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+}
+
+.admin-overview-subhead {
+  color: #334155;
+  font-size: 3.2rem;
+  font-weight: 600;
+}
+
+.admin-overview-icon {
+  border-radius: var(--border-radius-50);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem;
+  height: 5.2rem;
+  width: 5.2rem;
+}
+
+.admin-users-icon {
+  background: #3b82f6;
+}
+
+.admin-projects-icon {
+  background: #14b8a6;
+}
+
+.user {
+  background: #fff;
+  box-shadow: var(--shadow-light);
+  border-radius: 1.6rem;
+  color: #374151;
+  gap: 1rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 1.6rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2.4rem;
+}
+
+.user-name {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06rem;
+}
+
+.user-email,
+.user-role {
+  letter-spacing: 0.05rem;
+}
+
+.user-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
 }
 
 /********** ERROR PAGE *********/

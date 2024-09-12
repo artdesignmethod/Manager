@@ -4,8 +4,12 @@ import { NavLink } from "react-router-dom";
 // Icons
 import { FaUserCircle, FaShieldAlt } from "react-icons/fa";
 import { HiDocumentPlus, HiDocumentChartBar } from "react-icons/hi2";
+import { useDashboardContext } from "../pages/DashboardLayout";
 
 const MobileNav = () => {
+  const { user } = useDashboardContext();
+  const { role } = user;
+
   const [mobileBtnClass, setMobileBtnClass] = useState("btn-mobile-nav");
 
   const [iconClass, setIconClass] = useState("bar mobileNavClosed");
@@ -83,16 +87,18 @@ const MobileNav = () => {
             </NavLink>
           </li>
 
-          <li>
-            <NavLink
-              className="mobile-nav-link"
-              to="profile"
-              onClick={closeNav}
-            >
-              <FaShieldAlt className="mobile-nav-link-icon" />
-              Admin
-            </NavLink>
-          </li>
+          {role === "admin" && (
+            <li>
+              <NavLink
+                className="mobile-nav-link"
+                to="admin"
+                onClick={closeNav}
+              >
+                <FaShieldAlt className="mobile-nav-link-icon" />
+                Admin
+              </NavLink>
+            </li>
+          )}
         </ul>
       </nav>
     </div>

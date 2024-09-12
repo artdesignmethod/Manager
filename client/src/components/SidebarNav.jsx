@@ -10,7 +10,8 @@ import {
 import { HiDocumentPlus, HiDocumentChartBar } from "react-icons/hi2";
 
 const SidebarNav = () => {
-  const { resizeSidebar, toggleSidebar } = useDashboardContext();
+  const { user, resizeSidebar, toggleSidebar } = useDashboardContext();
+  const { role } = user;
 
   return (
     <aside className={resizeSidebar ? "sidebar" : "sidebar expand-sidebar"}>
@@ -35,6 +36,7 @@ const SidebarNav = () => {
               </div>
             </NavLink>
           </li>
+
           <li>
             <NavLink className="sidebar-nav-link" to="profile">
               <FaUserCircle className="sidebar-icon" />
@@ -44,15 +46,19 @@ const SidebarNav = () => {
               </div>
             </NavLink>
           </li>
-          <li>
-            <NavLink className="sidebar-nav-link" to="admin">
-              <FaShieldAlt className="sidebar-icon" />
 
-              <div className={resizeSidebar ? "hide-sidebar-text" : ""}>
-                Admin
-              </div>
-            </NavLink>
-          </li>
+          {role === "admin" && (
+            <li>
+              <NavLink className="sidebar-nav-link" to="admin">
+                <FaShieldAlt className="sidebar-icon" />
+
+                <div className={resizeSidebar ? "hide-sidebar-text" : ""}>
+                  Admin
+                </div>
+              </NavLink>
+            </li>
+          )}
+
           <li>
             <button
               className={
@@ -74,12 +80,6 @@ const SidebarNav = () => {
               </div>
             </button>
           </li>
-          {/* <button type="button" className="logout-button">
-            <div className="button-content flex">
-            <LuLogOut className="sidebar-icon" />
-            Log out
-            </div>
-            </button> */}
         </ul>
       </nav>
     </aside>
