@@ -1,10 +1,12 @@
 import { useDashboardContext } from "../pages/DashboardLayout";
 import Logo from "./Logo";
-import { FaRegUserCircle } from "react-icons/fa";
-import { LuLogOut } from "react-icons/lu";
-import { NavLink } from "react-router-dom";
 import defaultAvatar from "../assets/images/avatar.png";
 import ThemeToggle from "./ThemeToggle";
+
+// Icons
+import { FaUserCircle } from "react-icons/fa";
+import { LuLogOut } from "react-icons/lu";
+import { NavLink } from "react-router-dom";
 
 const DashboardNav = () => {
   const {
@@ -53,7 +55,7 @@ const DashboardNav = () => {
         onMouseLeave={closeDropdown}
       >
         <NavLink className="dropdown-link" to="profile" onClick={closeDropdown}>
-          <FaRegUserCircle className="sidebar-icon" />
+          <FaUserCircle className="sidebar-icon" />
           My Profile
         </NavLink>
 

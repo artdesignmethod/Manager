@@ -1723,6 +1723,17 @@ input::-webkit-inner-spin-button {
   .footer {
     padding: 6.4rem 3.2rem;
   }
+
+  .admin-overview-group {
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.6rem;
+  }
+
+  .admin-overview-header {
+    align-items: center;
+    line-height: 1.2;
+  }
 }
 
 /***************************************/

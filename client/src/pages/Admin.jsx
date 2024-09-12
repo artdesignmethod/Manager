@@ -3,6 +3,8 @@ import customFetch from "../utils/customFetch";
 import { toast } from "react-toastify";
 import User from "../components/User";
 import defaultAvatar from "../assets/images/avatar.png";
+
+// Icons
 import { FaUserCircle } from "react-icons/fa";
 import { HiDocumentChartBar } from "react-icons/hi2";
 
