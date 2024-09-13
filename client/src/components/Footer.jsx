@@ -10,53 +10,61 @@ const Footer = () => {
       <div>
         <Logo />
 
-        <div className="copyright-container">
-          <div className="copyright">
-            &copy; <span className="year">{currentYear}</span> Art Design
-            Method.
-            <br />
-            Illustrations created with{" "}
+        <div className="copyright">
+          &copy; <span className="year">{currentYear}</span> Manager by Art
+          Design Method.
+        </div>
+
+        <div className="footer-text">
+          Illustrations created with{" "}
+          <Link
+            className="copyright-link"
+            to="https://www.midjourney.com"
+            target="_blank"
+          >
+            Midjourney
+          </Link>{" "}
+          and{" "}
+          <Link
+            className="copyright-link"
+            to="https://app.leonardo.ai/"
+            target="_blank"
+          >
+            Leonardo.ai
+          </Link>
+          .
+          <div>
+            Animated icon created by{" "}
             <Link
               className="copyright-link"
-              to="https://www.midjourney.com"
+              to="https://www.flaticon.com/free-animated-icons/done"
               target="_blank"
             >
-              Midjourney
+              Freepik - Flaticon
             </Link>
             .
-            <div>
-              Animated icon created by{" "}
-              <Link
-                className="copyright-link"
-                to="https://www.flaticon.com/free-animated-icons/done"
-                target="_blank"
-              >
-                Freepik - Flaticon
-              </Link>
-              .
-            </div>
-            <div>
-              Avatar icon created by{" "}
-              <Link
-                className="copyright-link"
-                to="https://www.flaticon.com/free-icons/self-love"
-                target="_blank"
-              >
-                Bakuh Huda - Flaticon
-              </Link>
-              .
-            </div>
-            <div>
-              Moon and Stars icons by{" "}
-              <Link
-                className="copyright-link"
-                to="https://icons8.com/icon/0yCmzDVSxZ7O/moon-and-stars"
-                target="_blank"
-              >
-                Icons8
-              </Link>
-              .
-            </div>
+          </div>
+          <div>
+            Avatar icon created by{" "}
+            <Link
+              className="copyright-link"
+              to="https://www.flaticon.com/free-icons/self-love"
+              target="_blank"
+            >
+              Bakuh Huda - Flaticon
+            </Link>
+            .
+          </div>
+          <div>
+            Moon and Stars icons by{" "}
+            <Link
+              className="copyright-link"
+              to="https://icons8.com/icon/0yCmzDVSxZ7O/moon-and-stars"
+              target="_blank"
+            >
+              Icons8
+            </Link>
+            .
           </div>
         </div>
       </div>

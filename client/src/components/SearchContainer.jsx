@@ -20,7 +20,7 @@ const SearchContainer = () => {
   };
 
   return (
-    <div className="search-form-section">
+    <div className="search-container">
       <Form className="light-form">
         <p className="search-heading">Search for a project</p>
         <div className="grid grid-cols-3 form-input-gap">
@@ -58,8 +58,8 @@ const SearchContainer = () => {
           />
         </div>
 
-        <Link to="/dashboard/all-projects" className="light-form-link-button">
-          Reset Search Values
+        <Link to="/dashboard/all-projects" className="light-button-violet">
+          Clear filters
         </Link>
       </Form>
     </div>

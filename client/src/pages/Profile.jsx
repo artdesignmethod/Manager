@@ -86,7 +86,7 @@ const Profile = () => {
           </div>
 
           <SubmitButton
-            className="light-form-button"
+            className="light-button-violet"
             Submitting="Updating Profile"
             Submit="Update Profile"
           />

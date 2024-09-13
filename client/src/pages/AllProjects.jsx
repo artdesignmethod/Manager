@@ -25,9 +25,10 @@ const AllProjectsContext = createContext();
 
 const AllProjects = () => {
   const { data, statData } = useLoaderData();
+  const { defaultStats } = statData;
 
   return (
-    <AllProjectsContext.Provider value={{ data, statData }}>
+    <AllProjectsContext.Provider value={{ data, defaultStats }}>
       <SearchContainer />
       <ProjectsContainer />
     </AllProjectsContext.Provider>

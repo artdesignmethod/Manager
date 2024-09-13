@@ -8,9 +8,11 @@ import {
   TbLayoutSidebarLeftCollapseFilled,
 } from "react-icons/tb";
 import { HiDocumentPlus, HiDocumentChartBar } from "react-icons/hi2";
+import { RiLogoutBoxRFill } from "react-icons/ri";
 
 const SidebarNav = () => {
-  const { user, resizeSidebar, toggleSidebar } = useDashboardContext();
+  const { user, resizeSidebar, toggleSidebar, logoutUser } =
+    useDashboardContext();
   const { role } = user;
 
   return (
@@ -19,7 +21,7 @@ const SidebarNav = () => {
         <ul className="sidebar-nav-list">
           <li>
             <NavLink className="sidebar-nav-link" to="/dashboard">
-              <HiDocumentPlus className="sidebar-icon" />
+              <HiDocumentPlus className="sidebar-icon large" />
 
               <div className={resizeSidebar ? "hide-sidebar-text" : ""}>
                 Add Project
@@ -29,7 +31,7 @@ const SidebarNav = () => {
 
           <li>
             <NavLink className="sidebar-nav-link" to="all-projects">
-              <HiDocumentChartBar className="sidebar-icon" />
+              <HiDocumentChartBar className="sidebar-icon large" />
 
               <div className={resizeSidebar ? "hide-sidebar-text" : ""}>
                 Projects
@@ -58,6 +60,22 @@ const SidebarNav = () => {
               </NavLink>
             </li>
           )}
+
+          <li>
+            <button
+              type="button"
+              className="sidebar-nav-button"
+              onClick={logoutUser}
+            >
+              <div className="button-content flex">
+                <RiLogoutBoxRFill className="sidebar-icon large" />
+
+                <div className={resizeSidebar ? "hide-sidebar-text" : ""}>
+                  Log Out
+                </div>
+              </div>
+            </button>
+          </li>
 
           <li>
             <button

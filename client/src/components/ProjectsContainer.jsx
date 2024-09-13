@@ -9,11 +9,9 @@ import { SiProgress } from "react-icons/si";
 import { FaMoneyCheckDollar } from "react-icons/fa6";
 
 const ProjectsContainer = () => {
-  const { data, statData } = useAllProjectsContext();
+  const { data, defaultStats } = useAllProjectsContext();
 
   const { totalProjects, projects } = data;
-
-  const { defaultStats } = statData;
 
   const scheduledProjects = totalProjects > 0 ? defaultStats.scheduled : 0;
 

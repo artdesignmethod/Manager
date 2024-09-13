@@ -15,6 +15,7 @@ import {
 } from "../middleware/validationMiddleware.js";
 
 const router = Router();
+
 router.route("/").get(getAllProjects).post(validateProjectInput, createProject);
 
 router.route("/stats").get(showStats);
