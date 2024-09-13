@@ -3,12 +3,13 @@ import { useDashboardContext } from "../pages/DashboardLayout";
 
 // Icons
 import { FaUserCircle, FaShieldAlt } from "react-icons/fa";
+import { HiDocumentPlus, HiDocumentChartBar } from "react-icons/hi2";
+import { RiLogoutBoxRFill } from "react-icons/ri";
+import { IoStatsChart } from "react-icons/io5";
 import {
   TbLayoutSidebarRightCollapseFilled,
   TbLayoutSidebarLeftCollapseFilled,
 } from "react-icons/tb";
-import { HiDocumentPlus, HiDocumentChartBar } from "react-icons/hi2";
-import { RiLogoutBoxRFill } from "react-icons/ri";
 
 const SidebarNav = () => {
   const { user, resizeSidebar, toggleSidebar, logoutUser } =
@@ -35,6 +36,16 @@ const SidebarNav = () => {
 
               <div className={resizeSidebar ? "hide-sidebar-text" : ""}>
                 Projects
+              </div>
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink className="sidebar-nav-link" to="stats">
+              <IoStatsChart className="sidebar-icon" />
+
+              <div className={resizeSidebar ? "hide-sidebar-text" : ""}>
+                Statistics
               </div>
             </NavLink>
           </li>

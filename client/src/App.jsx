@@ -25,6 +25,7 @@ import { action as editProjectAction } from "./pages/EditProject";
 import { action as deleteProjectAction } from "./pages/DeleteProject";
 import { loader as adminLoader } from "./pages/Admin";
 import { action as profileAction } from "./pages/Profile";
+import { loader as statsLoader } from "./pages/Stats";
 
 import ErrorElement from "./components/ErrorElement";
 
@@ -69,7 +70,12 @@ const router = createBrowserRouter([
             element: <AddProject />,
             action: addProjectAction,
           },
-          { path: "stats", element: <Stats /> },
+          {
+            path: "stats",
+            element: <Stats />,
+            loader: statsLoader,
+            errorElement: <ErrorElement />,
+          },
           {
             path: "all-projects",
             element: <AllProjects />,

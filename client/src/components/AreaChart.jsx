@@ -9,16 +9,17 @@ import {
   Tooltip,
 } from "recharts";
 
-const AreaChartComponent = () => {
+const AreaChartComponent = ({ data }) => {
   return (
     <ResponsiveContainer width="95%" height={300}>
-      <AreaChart margin={{ top: 32 }}>
+      <AreaChart data={data} margin={{ top: 32 }}>
         <CartesianGrid strokeDasharray="2" />
-        <XAxis fontSize="1.5rem" />
+        <XAxis dataKey="date" fontSize="1.5rem" />
         <YAxis allowDecimals={false} />
         <Tooltip contentStyle={{ fontSize: "1.5rem" }} />
         <Area
           type="monotone"
+          dataKey="count"
           name="Projects"
           fill="#e0e7ff"
           stroke="#818cf8"

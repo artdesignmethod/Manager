@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import { FaUserCircle, FaShieldAlt } from "react-icons/fa";
 import { HiDocumentPlus, HiDocumentChartBar } from "react-icons/hi2";
 import { useDashboardContext } from "../pages/DashboardLayout";
+import { IoStatsChart } from "react-icons/io5";
 
 const MobileNav = () => {
   const { user } = useDashboardContext();
@@ -84,6 +85,13 @@ const MobileNav = () => {
             >
               <FaUserCircle className="mobile-nav-link-icon" />
               My Profile
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink className="mobile-nav-link" to="stats" onClick={closeNav}>
+              {<IoStatsChart className="mobile-nav-link-icon" />}
+              Statistics
             </NavLink>
           </li>
 
