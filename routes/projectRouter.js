@@ -14,16 +14,26 @@ import {
   validateIdParam,
 } from "../middleware/validationMiddleware.js";
 
+import { checkForGuestUser } from "../middleware/authMiddleware.js";
+
 const router = Router();
 
-router.route("/").get(getAllProjects).post(validateProjectInput, createProject);
+router
+  .route("/")
+  .get(getAllProjects)
+  .post(checkForGuestUser, validateProjectInput, createProject);
 
 router.route("/stats").get(showStats);
 
 router
   .route("/:id")
   .get(validateIdParam, getProject)
-  .patch(validateProjectInput, validateIdParam, updateProject)
-  .delete(validateIdParam, deleteProject);
+  .patch(
+    checkForGuestUser,
+    validateProjectInput,
+    validateIdParam,
+    updateProject
+  )
+  .delete(checkForGuestUser, validateIdParam, deleteProject);
 
 export default router;

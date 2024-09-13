@@ -1,4 +1,7 @@
-import { UnauthenticatedError } from "../errors/customErrors.js";
+import {
+  BadRequestError,
+  UnauthenticatedError,
+} from "../errors/customErrors.js";
 
 import { verifyJWT } from "../root-utils/tokenUtils.js";
 
@@ -12,8 +15,9 @@ export const authenticateUser = (req, res, next) => {
 
   try {
     const { userId, role } = verifyJWT(token);
+    const guestUser = userId === "66e465fef73de5e6cdb19b3a";
 
-    req.user = { userId, role }; // if cookie is present with verified token, attach user values from token to request in new object
+    req.user = { userId, role, guestUser }; // if cookie is present with verified token, attach user values from token to request in new object
 
     next();
   } catch (error) {
@@ -28,4 +32,8 @@ export const authorizePermissions = (...roles) => {
     }
     next();
   };
+};
+
+export const checkForGuestUser = (req, res, next) => {
+  if (req.user.guestUser) throw new BadRequestError("Read Only Mode");
 };
