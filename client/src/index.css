@@ -271,8 +271,8 @@ button:disabled {
   align-items: center;
   color: #fff;
   column-gap: 0.4rem;
-  font-size: 2rem;
-  font-weight: 600;
+  font-size: 2.2rem;
+  font-weight: 700;
   line-height: 1.2;
   text-decoration: none;
 }
@@ -623,7 +623,7 @@ button:disabled {
   cursor: pointer;
   font-family: inherit;
   font-size: 1.7rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.75px;
   text-decoration: none;
   transition: var(--transition);
@@ -699,7 +699,6 @@ button:disabled {
   list-style: none;
 }
 
-.sidebar-nav-link,
 .sidebar-nav-link:link,
 .sidebar-nav-link:visited,
 .sidebar-toggle-button,
