@@ -938,7 +938,36 @@ input[type="file"]::file-selector-button:hover {
   background: #d7dff9;
 }
 
-/********** HOMEPAGE FORM STYLE *********/
+/********** HOMEPAGE FORM STYLES *********/
+.homepage-form-section {
+  width: 100%;
+  height: 100vh;
+}
+
+.homepage-form-img-container {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+}
+
+.register-form-background {
+  background-image: linear-gradient(
+      rgba(34, 34, 34, 0.1),
+      rgba(34, 34, 34, 0.2)
+    ),
+    var(--register-image);
+}
+
+.login-form-background {
+  background-image: linear-gradient(
+      rgba(34, 34, 34, 0.1),
+      rgba(34, 34, 34, 0.2)
+    ),
+    var(--login-image);
+  background-position: center;
+}
 
 .homepage-form {
   background: -webkit-linear-gradient(to bottom, var(--indigo-600), #201747);
@@ -1446,37 +1475,78 @@ input::-webkit-inner-spin-button {
   height: 3rem;
   width: 3rem;
 }
-/********** REGISTER PAGE *********/
 
-.register-section,
-.login-section {
+/*********** PAGINATION ***********/
+.pagination-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.4rem 1rem;
   width: 100%;
-  height: 100vh;
 }
 
-.homepage-form-img-container {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+.pagination-text {
+  color: var(--light-theme-800);
+  font-size: 1.5rem;
+  letter-spacing: 0.55px;
+
+  & span {
+    font-weight: 600;
+  }
+}
+
+.pagination-buttons {
+  display: flex;
+  gap: 1.6rem 2.4rem;
+}
+
+.pagination-btn-icon {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.pagination-btn,
+.page-number-btn {
+  background: #fff;
+  color: inherit;
+  border: none;
+  border-radius: var(--border-radius-26);
+  box-shadow: var(--shadow-light);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 0.4rem;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 1.5rem;
+  letter-spacing: 0.75px;
+  padding: 1.4rem 1.8rem;
+  transition: var(--transition);
   height: 100%;
-  width: 100%;
+  width: 12rem;
 }
 
-.register-form-background {
-  background-image: linear-gradient(
-      rgba(34, 34, 34, 0.1),
-      rgba(34, 34, 34, 0.2)
-    ),
-    var(--register-image);
+.pagination-btn:hover,
+.page-number-btn.active {
+  background: var(--indigo-600);
+  color: white;
 }
 
-.login-form-background {
-  background-image: linear-gradient(
-      rgba(34, 34, 34, 0.1),
-      rgba(34, 34, 34, 0.2)
-    ),
-    var(--login-image);
-  background-position: center;
+.pagination-btn:hover:disabled {
+  cursor: default;
+}
+
+.page-numbers {
+  color: var(--light-theme-800);
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.75px;
+  padding: 1.4rem 0;
+}
+
+.page-numbers.active {
+  font-weight: 700;
 }
 
 /********** ADMIN SECTION **********/

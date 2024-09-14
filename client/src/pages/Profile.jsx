@@ -3,24 +3,28 @@ import { FormRow, SubmitButton } from "../components";
 import customFetch from "../utils/customFetch";
 import { toast } from "react-toastify";
 
-export const action = async ({ request }) => {
-  const formData = await request.formData();
-  const avatar = formData.get("avatar");
+export const action =
+  (queryClient) =>
+  async ({ request }) => {
+    const formData = await request.formData();
+    const avatar = formData.get("avatar");
+    if (avatar && avatar.size > 500000) {
+      toast.error("Image size limit is 0.5 MB");
+      return null;
+    }
+    try {
+      await customFetch.patch("/users/update-user", formData);
 
-  if (avatar && avatar.size > 500000) {
-    toast.error("Image size limit is 0.5 MB");
-    return null;
-  }
-  try {
-    await customFetch.patch("/users/update-user", formData);
+      queryClient.invalidateQueries(["user"]);
 
-    toast.success("Profile updated successfully");
-    return redirect("/dashboard");
-  } catch (error) {
-    toast.error(error?.response?.data?.msg);
-  }
-  return null;
-};
+      toast.success("Profile updated successfully");
+
+      return redirect("/dashboard");
+    } catch (error) {
+      toast.error(error?.response?.data?.msg);
+      return null;
+    }
+  };
 
 const Profile = () => {
   const { user } = useOutletContext();

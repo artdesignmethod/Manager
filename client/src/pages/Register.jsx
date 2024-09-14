@@ -22,7 +22,7 @@ export const action = async ({ request }) => {
 
 const Register = () => {
   return (
-    <section className="register-section grid grid-cols-2">
+    <section className="homepage-form-section grid grid-cols-2">
       <div className="homepage-form-img-container register-form-background"></div>
 
       <div className="register-form-container">

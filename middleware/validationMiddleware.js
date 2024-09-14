@@ -1,5 +1,10 @@
 import { body, param, validationResult } from "express-validator";
-import { BadRequestError } from "../errors/customErrors.js";
+import {
+  BadRequestError,
+  NotFoundError,
+  UnauthorizedError,
+} from "../errors/customErrors.js";
+
 import { PROJECT_STATUS } from "../root-utils/constants.js";
 import mongoose from "mongoose";
 import Project from "../models/ProjectModel.js";
@@ -11,7 +16,7 @@ const withValidationErrors = (validateValues) => {
     (req, res, next) => {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
-        const errorMessages = errors.array().map((error) => error.msg); // msg is built in
+        const errorMessages = errors.array().map((error) => error.msg);
         const firstMessage = errorMessages[0];
 
         console.log(Object.getPrototypeOf(firstMessage));
@@ -104,7 +109,6 @@ export const validateLoginInput = withValidationErrors([
     .withMessage(" email is required")
     .isEmail()
     .withMessage(" invalid email format"),
-
   body("password").notEmpty().withMessage(" password is required"),
 ]);
 
@@ -136,5 +140,3 @@ export const validateUpdateUserInput = withValidationErrors([
       }
     }),
 ]);
-
-// .custom() = custom function

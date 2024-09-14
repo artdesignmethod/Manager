@@ -1,18 +1,21 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+
 import {
-  AddProject,
-  EditProject,
+  HomeLayout,
+  Landing,
   Register,
   Login,
   DashboardLayout,
-  Profile,
-  Admin,
-  Error,
+  AddProject,
   AllProjects,
   Stats,
-  HomeLayout,
-  Landing,
+  Profile,
+  EditProject,
+  Admin,
+  Error,
 } from "./pages";
 
 import { action as registerAction } from "./pages/Register";
@@ -56,48 +59,47 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <Login />,
-        action: loginAction,
+        action: loginAction(queryClient),
       },
-      { path: "error", element: <Error /> },
 
       {
         path: "dashboard",
         element: <DashboardLayout queryClient={queryClient} />,
-        loader: dashboardLoader,
+        loader: dashboardLoader(queryClient),
         children: [
           {
             index: true,
             element: <AddProject />,
-            action: addProjectAction,
+            action: addProjectAction(queryClient),
           },
           {
             path: "stats",
             element: <Stats />,
-            loader: statsLoader,
+            loader: statsLoader(queryClient),
             errorElement: <ErrorElement />,
           },
           {
             path: "all-projects",
             element: <AllProjects />,
-            loader: allProjectsLoader,
+            loader: allProjectsLoader(queryClient),
             errorElement: <ErrorElement />,
           },
           {
             path: "profile",
             element: <Profile />,
-            action: profileAction,
+            action: profileAction(queryClient),
           },
-          { path: "admin", element: <Admin />, loader: adminLoader },
           {
             path: "edit-project/:id",
             element: <EditProject />,
-            loader: editProjectLoader,
-            action: editProjectAction,
+            loader: editProjectLoader(queryClient),
+            action: editProjectAction(queryClient),
           },
           {
             path: "delete-project/:id",
             action: deleteProjectAction(queryClient),
           },
+          { path: "admin", element: <Admin />, loader: adminLoader },
         ],
       },
     ],
@@ -108,6 +110,7 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 };

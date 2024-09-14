@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
+import { Link } from "react-router-dom";
 import { useAllProjectsContext } from "../pages/AllProjects";
 import { Project } from "../components";
+import PaginationContainer from "./PaginationContainer";
 
 // Icons
 import { HiDocumentChartBar } from "react-icons/hi2";
@@ -30,7 +32,7 @@ const ProjectsContainer = () => {
               {totalProjects >= 0 ? totalProjects : 0}
             </p>
 
-            <p className="overview-description">Total projects</p>
+            <p className="overview-description">Projects found</p>
           </div>
         </div>
 
@@ -71,7 +73,15 @@ const ProjectsContainer = () => {
         </div>
       </div>
 
-      <p className="projects-section-heading">Projects</p>
+      <div className="projects-section-heading">
+        {totalProjects > 0 ? (
+          "Projects"
+        ) : (
+          <Link to="/dashboard/" className="light-button-violet">
+            Add a project
+          </Link>
+        )}
+      </div>
 
       <div className="projects-container grid grid-cols-4">
         {projects.map((project) => {
@@ -79,7 +89,7 @@ const ProjectsContainer = () => {
         })}
       </div>
 
-      {/* {numOfPages > 1 && <PaginationContainer />} */}
+      <PaginationContainer />
     </section>
   );
 };

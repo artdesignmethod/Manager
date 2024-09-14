@@ -1,6 +1,7 @@
 import {
   BadRequestError,
   UnauthenticatedError,
+  UnauthorizedError,
 } from "../errors/customErrors.js";
 
 import { verifyJWT } from "../root-utils/tokenUtils.js";
@@ -36,4 +37,5 @@ export const authorizePermissions = (...roles) => {
 
 export const checkForGuestUser = (req, res, next) => {
   if (req.user.guestUser) throw new BadRequestError("Read Only Mode");
+  next();
 };

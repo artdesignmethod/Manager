@@ -4,11 +4,52 @@ import mongoose from "mongoose";
 import day from "dayjs";
 
 export const getAllProjects = async (req, res) => {
-  const projects = await Project.find({ createdBy: req.user.userId });
+  const { search, projectStatus, sort } = req.query;
 
-  const totalProjects = await Project.countDocuments();
+  const queryObject = {
+    createdBy: req.user.userId,
+  };
 
-  res.status(StatusCodes.OK).json({ projects, totalProjects });
+  // search = req.query.search
+  // i = not case sensitive
+  if (search) {
+    queryObject.$or = [{ projectName: { $regex: search, $options: "i" } }];
+  }
+
+  if (projectStatus && projectStatus !== "all") {
+    queryObject.projectStatus = projectStatus;
+  }
+
+  const sortOptions = {
+    newest: "-createdAt",
+    oldest: "createdAt",
+    "a-z": "projectName",
+    "z-a": "-projectName",
+  };
+
+  const sortKey = sortOptions[sort] || sortOptions.newest;
+
+  // Pagination Setup
+  const page = Number(req.query.page) || 1;
+  const limit = Number(req.query.limit) || 20;
+  const skip = (page - 1) * limit;
+
+  const projects = await Project.find(queryObject)
+    .sort(sortKey)
+    .skip(skip)
+    .limit(limit);
+
+  const totalProjects = await Project.countDocuments(queryObject);
+
+  const numberOfPages = Math.ceil(totalProjects / limit);
+
+  res.status(StatusCodes.OK).json({
+    projects,
+    projectStatus,
+    totalProjects,
+    numberOfPages,
+    currentPage: page,
+  });
 };
 
 // Create Project
@@ -44,7 +85,9 @@ export const updateProject = async (req, res) => {
 export const deleteProject = async (req, res) => {
   const removedProject = await Project.findByIdAndDelete(req.params.id);
 
-  res.status(200).json({ msg: "Project deleted.", project: removedProject });
+  res
+    .status(StatusCodes.OK)
+    .json({ msg: "Project deleted.", project: removedProject });
 };
 
 export const showStats = async (req, res) => {

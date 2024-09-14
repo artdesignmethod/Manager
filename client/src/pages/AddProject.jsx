@@ -1,24 +1,28 @@
 import { Form, redirect } from "react-router-dom";
-import { FormRow, FormRowSelect, SubmitButton } from "../components";
-import { toast } from "react-toastify";
 import customFetch from "../utils/customFetch";
+import { FormRow, FormRowSelect, SubmitButton } from "../components";
 import { PROJECT_STATUS } from "../../../root-utils/constants";
+import { toast } from "react-toastify";
 
-export const action = async ({ request }) => {
-  const formData = await request.formData();
-  const data = Object.fromEntries(formData);
+export const action =
+  (queryClient) =>
+  async ({ request }) => {
+    const formData = await request.formData();
+    const data = Object.fromEntries(formData);
 
-  try {
-    await customFetch.post("/projects", data);
+    try {
+      await customFetch.post("/projects", data);
 
-    toast.success("Project added successfully ");
+      queryClient.invalidateQueries(["projects"]);
 
-    return redirect("all-projects");
-  } catch (error) {
-    toast.error(error?.response?.data?.msg);
-    return error;
-  }
-};
+      toast.success("Project added successfully ");
+
+      return redirect("all-projects");
+    } catch (error) {
+      toast.error(error?.response?.data?.msg);
+      return error;
+    }
+  };
 
 const AddProject = () => {
   return (

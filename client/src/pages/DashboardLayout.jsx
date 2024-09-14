@@ -1,26 +1,25 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { createContext, useContext, useState } from "react";
-import {
-  Outlet,
-  redirect,
-  useNavigate,
-  useNavigation,
-  useLoaderData,
-} from "react-router-dom";
+import { createContext, useContext, useState, useEffect } from "react";
+import { Outlet, redirect, useNavigate, useNavigation } from "react-router-dom";
 
 import { toast } from "react-toastify";
 import customFetch from "../utils/customFetch";
-
-import SidebarNav from "../components/SidebarNav";
-import DashboardNav from "../components/DashboardNav";
-import MobileNav from "../components/MobileNav";
+import { SidebarNav, DashboardNav, MobileNav, Loading } from "../components";
 import { checkDefaultTheme } from "../App";
-import Loading from "../components/Loading";
+import { useQuery } from "@tanstack/react-query";
 
-export const loader = async () => {
-  try {
+const userQuery = {
+  queryKey: ["user"],
+  queryFn: async () => {
     const { data } = await customFetch.get("/users/current-user");
     return data;
+  },
+};
+
+export const loader = (queryClient) => async () => {
+  try {
+    return await queryClient.ensureQueryData(userQuery);
   } catch (error) {
     return redirect("/");
   }
@@ -28,8 +27,8 @@ export const loader = async () => {
 
 const DashboardContext = createContext();
 
-const DashboardLayout = () => {
-  const { user } = useLoaderData();
+const DashboardLayout = ({ queryClient }) => {
+  const { user } = useQuery(userQuery).data;
 
   const navigate = useNavigate();
 
@@ -42,6 +41,8 @@ const DashboardLayout = () => {
   const [showDropdown, setShowDropdown] = useState(false);
 
   const [darkTheme, setDarkTheme] = useState(checkDefaultTheme);
+
+  const [isAuthError, setIsAuthError] = useState(false);
 
   const toggleSidebar = () => {
     setResizeSidebar(!resizeSidebar);
@@ -73,8 +74,27 @@ const DashboardLayout = () => {
     closeDropdown();
     navigate("/");
     await customFetch.get("/auth/logout");
+    queryClient.invalidateQueries();
     toast.success("You have logged out");
   };
+
+  customFetch.interceptors.response.use(
+    (response) => {
+      return response;
+    },
+    (error) => {
+      if (error?.response?.status === 401) {
+        setIsAuthError(true);
+      }
+      return Promise.reject(error);
+    }
+  );
+
+  // Log user out when getting 401 error
+  useEffect(() => {
+    if (!isAuthError) return;
+    logoutUser();
+  }, [isAuthError]);
 
   return (
     <DashboardContext.Provider
