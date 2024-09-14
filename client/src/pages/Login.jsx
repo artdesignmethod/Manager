@@ -86,7 +86,7 @@ const Login = () => {
             className="homepage-form-button guest-login-button"
             onClick={loginGuestUser}
           >
-            Explore as guest
+            Explore app
           </button>
         </div>
 
