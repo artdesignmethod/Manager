@@ -37,7 +37,6 @@ const AddProject = () => {
           labelClass="dark-label"
           type="text"
           inputClass="light-input"
-          defaultValue="Artistic"
           minLength="1"
           maxLength="18"
           name="projectName"
@@ -52,7 +51,6 @@ const AddProject = () => {
             min="1"
             max="365"
             name="projectDays"
-            defaultValue="90"
           />
 
           <FormRow
@@ -63,7 +61,6 @@ const AddProject = () => {
             min="1"
             max="200"
             name="projectHours"
-            defaultValue="40"
           />
         </div>
 
@@ -76,14 +73,12 @@ const AddProject = () => {
             min="1"
             max="999999999"
             name="projectPrice"
-            defaultValue="1000"
           />
 
           <FormRowSelect
             labelText="Project status"
             name="projectStatus"
             list={Object.values(PROJECT_STATUS)}
-            defaultValue={PROJECT_STATUS.SCHEDULED}
           />
         </div>
 

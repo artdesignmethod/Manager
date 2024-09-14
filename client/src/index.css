@@ -1338,6 +1338,7 @@ input::-webkit-inner-spin-button {
 
 .projects-section-heading .light-button-violet {
   margin: 0;
+  width: auto;
 }
 
 .projects-container {
