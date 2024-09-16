@@ -15,8 +15,9 @@ export const action = async ({ request }) => {
 
     return redirect("/login");
   } catch (error) {
-    toast.error(error?.response?.data?.msg);
-    return error;
+    // toast.error(error?.response?.data?.msg);
+    toast.error("Registration disabled");
+    return redirect("/login");
   }
 };
 

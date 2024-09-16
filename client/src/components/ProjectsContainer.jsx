@@ -74,9 +74,7 @@ const ProjectsContainer = () => {
       </div>
 
       <div className="projects-section-heading">
-        {totalProjects > 0 ? (
-          "Projects"
-        ) : (
+        {totalProjects === 0 && (
           <Link to="/dashboard/" className="light-button-violet">
             Add a project
           </Link>

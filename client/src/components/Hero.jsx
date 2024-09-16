@@ -14,7 +14,7 @@ const Hero = () => {
         <ul className="hero-nav">
           <li>
             <Link to="login" className="nav-link violet-glass-link">
-              Log in
+              Log In
             </Link>
           </li>
 

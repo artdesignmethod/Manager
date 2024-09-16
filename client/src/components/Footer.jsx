@@ -76,6 +76,7 @@ const Footer = () => {
               Login
             </Link>
           </li>
+
           <li>
             <Link to="register" className="footer-link">
               Sign up

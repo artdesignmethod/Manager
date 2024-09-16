@@ -6,7 +6,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import {
   HomeLayout,
   Landing,
-  // Register,
+  Register,
   Login,
   DashboardLayout,
   AddProject,
@@ -18,7 +18,7 @@ import {
   Error,
 } from "./pages";
 
-// import { action as registerAction } from "./pages/Register";
+import { action as registerAction } from "./pages/Register";
 import { action as loginAction } from "./pages/Login";
 import { loader as dashboardLoader } from "./pages/DashboardLayout";
 import { action as addProjectAction } from "./pages/AddProject";
@@ -55,7 +55,7 @@ const router = createBrowserRouter([
     errorElement: <Error />,
     children: [
       { index: true, element: <Landing /> },
-      // { path: "register", element: <Register />, action: registerAction },
+      { path: "register", element: <Register />, action: registerAction },
       {
         path: "login",
         element: <Login />,
