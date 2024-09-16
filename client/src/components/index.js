@@ -1,5 +1,9 @@
 export { default as Logo } from "./Logo";
 
+export { default as Hero } from "./Hero";
+
+export { default as Features } from "./Features";
+
 export { default as DashboardNav } from "./DashboardNav";
 
 export { default as SidebarNav } from "./SidebarNav";

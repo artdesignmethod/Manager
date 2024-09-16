@@ -1,4 +1,4 @@
-import { Link, Form, redirect, useNavigate } from "react-router-dom";
+import { Form, redirect, useNavigate } from "react-router-dom";
 import { Logo, FormRow, SubmitButton } from "../components";
 import customFetch from "../utils/customFetch";
 import { toast } from "react-toastify";
@@ -91,9 +91,9 @@ const Login = () => {
         </div>
 
         <div className="center">
-          <Link to="/register" className="homepage-form-link">
+          {/* <Link to="/register" className="homepage-form-link">
             Create new account
-          </Link>
+          </Link> */}
         </div>
       </Form>
     </section>

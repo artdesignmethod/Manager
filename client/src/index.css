@@ -226,7 +226,6 @@ body {
   font-size: 3.8rem;
   font-weight: 600;
   line-height: 1.2;
-  margin-bottom: 2.4rem;
 }
 
 .hidden {
@@ -273,6 +272,7 @@ button:disabled {
   column-gap: 0.4rem;
   font-size: 2.2rem;
   font-weight: 700;
+  letter-spacing: 1.2px;
   line-height: 1.2;
   text-decoration: none;
 }
@@ -388,39 +388,6 @@ button:disabled {
   justify-content: center;
   column-gap: 1.6rem;
   list-style: none;
-}
-
-.btn-hero:link,
-.btn-hero:visited {
-  background: -webkit-linear-gradient(
-    to bottom,
-    var(--blue-600),
-    var(--indigo-600)
-  );
-  background: -moz-linear-gradient(
-    to bottom,
-    var(--blue-600),
-    var(--indigo-600)
-  );
-  background: linear-gradient(to bottom, var(--blue-600), var(--indigo-600));
-  border: none;
-  border-radius: 50%;
-  color: #f9fafb;
-  cursor: pointer;
-  display: inline-block;
-  font-size: 1.7rem;
-  font-weight: 500;
-  letter-spacing: 1px;
-  margin-top: 3.2rem;
-  padding: 1.2rem;
-  text-decoration: none;
-  transition: all 0.2s;
-}
-
-.btn-hero:hover,
-.btn-hero:active {
-  box-shadow: var(--shadow-light);
-  transform: translateY(-3px);
 }
 
 /*********** LOADER ***********/
@@ -888,6 +855,75 @@ button:disabled {
   }
 }
 
+/****** FEATURES SECTION ******/
+
+.feature-section .heading-secondary {
+  color: var(--white);
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  margin-bottom: 6.4rem;
+  text-align: center;
+}
+
+.feature-section {
+  background: #111827;
+  border-bottom: 1px solid #000;
+  color: #fff;
+  padding: 9.6rem;
+}
+
+.features {
+  gap: 3.2rem 6.4rem;
+}
+
+.feature-icon {
+  height: 4.4rem;
+  width: 4.4rem;
+  margin-bottom: 1.6rem;
+}
+
+.feature-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.6rem;
+  text-transform: uppercase;
+}
+
+.feature-text {
+  font-size: 1.8rem;
+  font-weight: 400;
+  letter-spacing: 0.1rem;
+  margin-bottom: 1.6rem;
+}
+
+.feature-link:link,
+.feature-link:visited {
+  border-bottom: 3px solid transparent;
+  padding-bottom: 0.4rem;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.4rem;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.feature-youtube-link:link,
+.feature-youtube-link:visited {
+  border-bottom: 3px solid transparent;
+  padding-bottom: 0.4rem;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.8rem;
+  text-decoration: none;
+}
+
+.feature-link:hover,
+.feature-link:active,
+.feature-youtube-link:hover,
+.feature-youtube-link:active {
+  border-bottom: 3px solid #fff;
+}
+
 /*********** GLOBAL FORM STYLES ***********/
 
 input::-webkit-outer-spin-button,
@@ -988,6 +1024,7 @@ input[type="file"]::file-selector-button:hover {
 
 .homepage-form .heading-tertiary {
   color: var(--white);
+  margin-bottom: 2.4rem;
 }
 
 .homepage-form-description {
@@ -1722,7 +1759,7 @@ input::-webkit-inner-spin-button {
   color: #fff;
   display: inline-block;
   font-size: 1.6rem;
-  font-weight: 500;
+  font-weight: 800;
   letter-spacing: 1px;
   text-decoration: none;
   transition: var(--transition);
@@ -1797,6 +1834,10 @@ input::-webkit-inner-spin-button {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .feature-section {
+    padding: 9.6rem 4.8rem;
+  }
+
   .dashboard {
     grid-template-columns: 1fr;
     grid-template-areas:
@@ -1835,6 +1876,14 @@ input::-webkit-inner-spin-button {
     padding: 6.4rem 3.2rem;
   }
 
+  .feature-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 6.4rem 3.2rem;
+  }
+
   .admin-overview-group {
     flex-direction: column;
     justify-content: center;
@@ -1857,6 +1906,14 @@ input::-webkit-inner-spin-button {
 
   .grid-cols-4 {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .feature-section {
+    padding: 9.6rem 2.4rem;
+  }
+
+  .feature {
+    text-align: center;
   }
 
   .light-form {
