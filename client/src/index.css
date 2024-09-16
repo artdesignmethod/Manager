@@ -280,7 +280,7 @@ button:disabled {
 .header {
   height: 100vh;
   background-image: linear-gradient(
-      rgba(34, 34, 34, 0.3),
+      rgba(34, 34, 34, 0.1),
       rgba(34, 34, 34, 0.3)
     ),
     var(--hero-image);
