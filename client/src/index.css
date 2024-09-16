@@ -1947,11 +1947,6 @@ input::-webkit-inner-spin-button {
     justify-content: center;
   }
 
-  .nav-link:link,
-  .nav-link:visited {
-    padding: 1.4rem 2.4rem 1.3rem 2.4rem;
-  }
-
   .hero-text {
     text-align: center;
   }
