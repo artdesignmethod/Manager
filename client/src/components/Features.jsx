@@ -21,7 +21,7 @@ const Features = () => {
           <p className="feature-title">Project Management</p>
 
           <p className="feature-text">
-            Perform progress updates <br /> or remove unwanted projects.
+            Perform progress updates <br /> or delete projects.
           </p>
         </div>
 
