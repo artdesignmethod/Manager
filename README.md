@@ -17,4 +17,4 @@ Full-stack MERN application that allows users to manage and organize their proje
 ## Technologies
 
 - Front-End: React
-- Back-end: Express, NodeJS and MongoDB
+- Back-End: Express, NodeJS and MongoDB
