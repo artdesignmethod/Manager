@@ -1964,6 +1964,10 @@ input::-webkit-inner-spin-button {
     display: none;
   }
 
+  .nav-dropdown {
+    right: 2.4rem;
+  }
+
   .homepage-form,
   .light-form {
     padding: 3.2rem;
