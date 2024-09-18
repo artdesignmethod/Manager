@@ -25,7 +25,7 @@
 @font-face {
   font-family: "Poppins";
   font-style: normal;
-  font-weight: 800;
+  font-weight: 700;
   font-display: swap;
   src: url("./assets/fonts/poppins-bold-webfont.woff2") format("woff2");
 }
@@ -177,11 +177,6 @@ body {
   display: none;
 }
 
-.container {
-  max-width: 120rem;
-  margin: 0 auto;
-}
-
 .flex {
   display: flex;
 }
@@ -235,10 +230,6 @@ body {
 
 button:disabled {
   cursor: wait;
-}
-
-.light {
-  color: var(--white);
 }
 
 .col-gap-24 {
@@ -375,19 +366,19 @@ button:disabled {
   margin-bottom: 3.2rem;
 }
 
+.hero-nav {
+  display: flex;
+  justify-content: center;
+  column-gap: 1.6rem;
+  list-style: none;
+}
+
 .hero-icon {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 3.2rem;
   width: 3.2rem;
-}
-
-.hero-nav {
-  display: flex;
-  justify-content: center;
-  column-gap: 1.6rem;
-  list-style: none;
 }
 
 /*********** LOADER ***********/
@@ -1755,7 +1746,7 @@ input::-webkit-inner-spin-button {
   color: #fff;
   display: inline-block;
   font-size: 1.6rem;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 1px;
   text-decoration: none;
   transition: var(--transition);
@@ -1961,13 +1952,21 @@ input::-webkit-inner-spin-button {
     grid-template-columns: 1fr;
   }
 
-  .homepage-form,
-  .light-form {
-    padding: 3.2rem;
+  .dashboard-nav {
+    padding: 2.4rem;
   }
 
   .dashboard-main {
     padding: 3.2rem 2.4rem;
+  }
+
+  .avatar-name {
+    display: none;
+  }
+
+  .homepage-form,
+  .light-form {
+    padding: 3.2rem;
   }
 
   .search-heading {
@@ -1989,6 +1988,10 @@ input::-webkit-inner-spin-button {
 @media (max-width: 380px) {
   .hero-section br {
     display: block;
+  }
+
+  .dashboard-nav .logo-container {
+    margin-left: 5.2rem;
   }
 
   .heading-secondary {
