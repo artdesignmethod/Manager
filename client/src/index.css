@@ -1856,6 +1856,10 @@ input::-webkit-inner-spin-button {
     padding: 9.6rem 4.8rem;
   }
 
+  .homepage-form {
+    padding: 3.2rem;
+  }
+
   .dashboard {
     grid-template-columns: 1fr;
     grid-template-areas:
@@ -1871,7 +1875,7 @@ input::-webkit-inner-spin-button {
   }
 
   .dashboard-nav {
-    justify-content: flex-end;
+    justify-content: end;
     padding-left: 8rem;
   }
 
@@ -1938,15 +1942,8 @@ input::-webkit-inner-spin-button {
     border-radius: var(--border-radius-26);
   }
 
-  .dashboard-form-img-container,
-  .homepage-form-img-container {
-    display: none;
-  }
-
-  .register-section,
-  .login-section {
-    display: flex;
-    flex-direction: column;
+  .projects-section-heading {
+    text-align: center;
   }
 
   .pagination-section {
@@ -1999,7 +1996,6 @@ input::-webkit-inner-spin-button {
     right: 2.4rem;
   }
 
-  .homepage-form,
   .light-form {
     padding: 3.2rem;
   }
