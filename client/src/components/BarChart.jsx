@@ -16,7 +16,10 @@ const BarChartComponent = ({ data }) => {
         <CartesianGrid strokeDasharray="2" />
         <XAxis dataKey="date" fontSize="1.5rem" />
         <YAxis allowDecimals={false} />
-        <Tooltip contentStyle={{ fontSize: "1.5rem" }} />
+        <Tooltip
+          cursor={{ fill: "transparent" }}
+          contentStyle={{ fontSize: "1.5rem" }}
+        />
         <Bar
           dataKey="count"
           fill="#4f46e5"

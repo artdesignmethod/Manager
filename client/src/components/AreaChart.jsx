@@ -21,7 +21,7 @@ const AreaChartComponent = ({ data }) => {
           type="monotone"
           dataKey="count"
           name="Projects"
-          fill="#e0e7ff"
+          fill="var(--area-chart-fill)"
           stroke="#818cf8"
           strokeWidth={3}
         />

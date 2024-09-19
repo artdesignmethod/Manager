@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 const Wrapper = styled.article`
-  background: var(--white);
+  background: var(--light-small-component-background);
+  box-shadow: var(--light-small-component-shadow);
   border-radius: 1.6rem;
-  box-shadow: var(--shadow-light);
   display: flex;
   justify-content: start;
   column-gap: 1.6rem;
@@ -18,14 +18,14 @@ const Wrapper = styled.article`
   }
 
   .count {
-    color: #334155;
+    color: var(--light-theme-700);
     font-size: 3.2rem;
     font-weight: 600;
     line-height: 1;
   }
 
   .title {
-    color: #475569;
+    color: var(--light-theme-600);
     font-size: 1.2rem;
     font-weight: 600;
     letter-spacing: 0.1rem;

@@ -83,7 +83,7 @@ const AddProject = () => {
         </div>
 
         <SubmitButton
-          className="light-button-grey"
+          className="light-button-general"
           Submitting="Adding new project"
           Submit="Submit"
         />
