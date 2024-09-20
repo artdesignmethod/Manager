@@ -3,7 +3,7 @@ import { HiMiniCalendarDays, HiDocumentCheck } from "react-icons/hi2";
 
 const Features = () => {
   return (
-    <div className="feature-section" id="features">
+    <section className="feature-section" id="features">
       <h2 className="heading-secondary">Features</h2>
 
       <div className="features grid grid-cols-3">
@@ -31,7 +31,7 @@ const Features = () => {
           <p className="feature-text">View monthly stats and overviews.</p>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
