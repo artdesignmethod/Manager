@@ -154,7 +154,6 @@ body {
 
 .dark-theme .dashboard-nav,
 .dark-theme .dashboard,
-.dark-theme .dashboard-main,
 .dark-theme .mobile-nav {
   background: var(--dark-theme-gradient-bottom);
 }
