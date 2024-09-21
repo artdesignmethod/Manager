@@ -1249,6 +1249,7 @@ input::-webkit-inner-spin-button {
   display: block;
   font-family: inherit;
   font-size: 1.6rem;
+  outline: none;
   padding: 1.6rem 2rem;
   margin-bottom: 2.4rem;
   width: 100%;
@@ -1271,6 +1272,7 @@ input::-webkit-inner-spin-button {
   letter-spacing: 0.75px;
   line-height: 1.2;
   margin-top: 1.6rem;
+  outline: none;
   padding: 1.7rem 2rem;
   text-decoration: none;
   text-align: center;
