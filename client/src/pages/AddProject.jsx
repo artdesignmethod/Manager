@@ -30,7 +30,7 @@ const AddProject = () => {
       <div className="dashboard-form-img-container add-project-form-background"></div>
 
       <Form method="post" className="light-form">
-        <h3 className=" heading-tertiary center">Add project</h3>
+        <h3 className=" heading-tertiary center">Add Project</h3>
 
         <FormRow
           labelText="Project name"
