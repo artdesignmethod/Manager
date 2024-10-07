@@ -1018,18 +1018,14 @@ input[type="file"]::file-selector-button:hover {
 .register-form-background {
   background-image: linear-gradient(
       rgba(34, 34, 34, 0.1),
-      rgba(34, 34, 34, 0.2)
+      rgba(34, 34, 34, 0.1)
     ),
     var(--register-image);
   background-position: left;
 }
 
 .login-form-background {
-  background-image: linear-gradient(
-      rgba(34, 34, 34, 0.1),
-      rgba(34, 34, 34, 0.2)
-    ),
-    var(--login-image);
+  background-image: var(--login-image);
   background-position: right;
 }
 
