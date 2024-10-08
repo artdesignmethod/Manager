@@ -1017,7 +1017,7 @@ input[type="file"]::file-selector-button:hover {
 
 .register-form-background {
   background-image: linear-gradient(
-      rgba(34, 34, 34, 0.1),
+      rgba(34, 34, 34, 0.05),
       rgba(34, 34, 34, 0.1)
     ),
     var(--register-image);
@@ -1141,27 +1141,15 @@ input[type="file"]::file-selector-button:hover {
 }
 
 .add-project-form-background {
-  background-image: linear-gradient(
-      rgba(34, 34, 34, 0.1),
-      rgba(34, 34, 34, 0.2)
-    ),
-    var(--add-project-image);
+  background-image: var(--add-project-image);
 }
 
 .edit-project-form-background {
-  background-image: linear-gradient(
-      rgba(34, 34, 34, 0.1),
-      rgba(34, 34, 34, 0.2)
-    ),
-    var(--edit-project-image);
+  background-image: var(--edit-project-image);
 }
 
 .edit-profile-form-background {
-  background-image: linear-gradient(
-      rgba(34, 34, 34, 0.1),
-      rgba(34, 34, 34, 0.2)
-    ),
-    var(--edit-profile-image);
+  background-image: var(--edit-profile-image);
 }
 
 /* .light-form-description {
