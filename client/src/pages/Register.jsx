@@ -38,7 +38,7 @@ const Register = () => {
             </p>
 
             <div className="register-contact-section">
-              <div className="form-input-gap grid grid-cols-2">
+              <div className="col-gap-24 grid grid-cols-2">
                 <FormRow
                   labelText="First name"
                   inputClass="homepage-form-input"
@@ -54,19 +54,21 @@ const Register = () => {
                 />
               </div>
 
-              <FormRow
-                labelText="Email address"
-                inputClass="homepage-form-input"
-                type="email"
-                name="email"
-              />
+              <div className="col-gap-24 grid grid-cols-2">
+                <FormRow
+                  labelText="Email address"
+                  inputClass="homepage-form-input"
+                  type="email"
+                  name="email"
+                />
 
-              <FormRow
-                labelText="Password"
-                inputClass="homepage-form-input"
-                type="password"
-                name="password"
-              />
+                <FormRow
+                  labelText="Password"
+                  inputClass="homepage-form-input"
+                  type="password"
+                  name="password"
+                />
+              </div>
             </div>
           </div>
 
