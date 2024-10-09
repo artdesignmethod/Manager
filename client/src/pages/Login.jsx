@@ -51,7 +51,7 @@ const Login = () => {
 
         <div className="login-form-inputs-container">
           <p className="homepage-form-description">
-            Please enter your details below to sign in:
+            Please enter your details to sign in:
           </p>
 
           <div className="login-contact-section">
