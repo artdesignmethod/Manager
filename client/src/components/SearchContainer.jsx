@@ -30,7 +30,7 @@ const SearchContainer = () => {
 
         <div className="grid grid-cols-3 form-input-gap">
           <FormRow
-            labelText="Search"
+            labelText="Project"
             labelClass="dark-label"
             type="search"
             name="search"
