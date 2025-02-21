@@ -227,13 +227,13 @@ body {
 
 .heading-primary {
   color: var(--white);
-  font-size: 6.6rem;
-  line-height: 1.2;
+  font-family: "Fugaz One", Arial, Helvetica, sans-serif;
+  font-size: 7rem;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  line-height: 1.1;
   margin-bottom: 1.6rem;
-}
-
-.heading-primary br {
-  display: none;
+  text-transform: uppercase;
 }
 
 .heading-secondary {
@@ -376,21 +376,31 @@ button:disabled {
 .hero-section {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 2.4rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 100%;
-  width: 100%;
+  /* position: absolute;
+  top: 25%;
+  left: 15%;
+  right: 0;
+  bottom: 0;
+  height: 50%;
+  z-index: -1; */
+  padding: 2.4rem 2.4rem 2.4rem 9.6rem;
+  height: 75%;
+}
+
+.hero-text {
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .hero-description {
   color: var(--white);
-  font-size: 2rem;
+  font-size: 2.4rem;
   line-height: 1.6;
+  font-weight: 400;
   margin-bottom: 3.2rem;
 }
 
@@ -902,10 +912,9 @@ button:disabled {
 }
 
 .feature-title {
-  font-size: 2rem;
+  font-size: 2.4rem;
   font-weight: 600;
   margin-bottom: 1.6rem;
-  text-transform: uppercase;
 }
 
 .feature-text {
@@ -1149,7 +1158,7 @@ input[type="file"]::file-selector-button:hover {
 
 .edit-profile-form-background {
   background-image: var(--edit-profile-image);
-  background-position: center right;
+  background-position: center;
 }
 
 /* .light-form-description {
@@ -1818,6 +1827,10 @@ input::-webkit-inner-spin-button {
     font-size: 6.4rem;
   }
 
+  .hero-section {
+    padding-left: 6.4rem;
+  }
+
   .grid-cols-4 {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -1832,6 +1845,10 @@ input::-webkit-inner-spin-button {
 @media (max-width: 59em) {
   html {
     font-size: 50%;
+  }
+
+  .hero-section {
+    padding-left: 4.8rem;
   }
 
   .grid-cols-3 {
@@ -1907,6 +1924,18 @@ input::-webkit-inner-spin-button {
 /********** BELOW 768PX (Smaller Tablets) **********/
 
 @media (max-width: 48em) {
+  .hero-section {
+    align-items: center;
+    justify-content: center;
+    height: 85%;
+    padding: 2.4rem;
+    text-align: center;
+  }
+
+  .hero-text {
+    align-items: center;
+  }
+
   .grid-cols-2,
   .grid-cols-3 {
     grid-template-columns: 1fr;
@@ -1941,7 +1970,7 @@ input::-webkit-inner-spin-button {
 
 @media (max-width: 34em) {
   .heading-primary {
-    font-size: 4.4rem;
+    font-size: 5.2rem;
   }
 
   .heading-secondary {
@@ -1950,16 +1979,6 @@ input::-webkit-inner-spin-button {
 
   .main-nav {
     justify-content: center;
-  }
-
-  .hero-text {
-    text-align: center;
-  }
-
-  .hero-description {
-    margin-left: auto;
-    margin-right: auto;
-    width: 80%;
   }
 
   .grid-cols-4 {
@@ -2003,10 +2022,6 @@ input::-webkit-inner-spin-button {
 /********** BELOW 350px (Small Phones) **********/
 
 @media (max-width: 380px) {
-  .hero-section br {
-    display: block;
-  }
-
   .heading-secondary {
     font-size: 3.2rem;
   }

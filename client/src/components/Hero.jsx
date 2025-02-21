@@ -2,13 +2,14 @@ import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <section className="hero-section center">
+    <section className="hero-section">
       <div className="hero-text">
         <h1 className="heading-primary">
           From start <br /> to finish
         </h1>
+
         <p className="hero-description">
-          Creating a smooth project management experience
+          Creating a smooth project <br /> management experience
         </p>
 
         <ul className="hero-nav">
